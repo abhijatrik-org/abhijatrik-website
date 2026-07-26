@@ -29,7 +29,44 @@ document.getElementById("applyForm").addEventListener("submit", async function(e
 
         if(result.status === "success"){
 
-            alert("✅ আবেদন সফলভাবে জমা হয়েছে।");
+           document.getElementById("applyForm").innerHTML = `
+<div style="
+background:#f0fff4;
+border:2px solid #28a745;
+padding:35px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<h2 style="color:#28a745;">
+✅ আবেদন সফলভাবে সম্পন্ন হয়েছে
+</h2>
+
+<p style="font-size:18px;">
+আপনার আবেদন সফলভাবে গ্রহণ করা হয়েছে।
+</p>
+
+<p>
+এখন আপনার শ্রেণির সিলেবাস ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।
+</p>
+
+<a href="syllabus.html"
+style="
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#0d6efd;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+">
+📖 সিলেবাস ডাউনলোড করুন
+</a>
+
+</div>
+`;
 
             window.location.href = "syllabus.html";
 
