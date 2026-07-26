@@ -163,3 +163,115 @@ footer{
     }
 
 }
+/* ===== Version 2.0 Apply Form ===== */
+
+body{
+    background:#f4f7fb;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
+}
+
+header{
+    background:#0d6efd;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    background:#ffffff;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    padding:12px;
+    text-align:center;
+}
+
+nav a{
+    color:#0d6efd;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+#applyForm{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+#applyForm label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+#applyForm input,
+#applyForm select,
+#applyForm textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d0d7de;
+    border-radius:8px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+#applyForm input:focus,
+#applyForm select:focus,
+#applyForm textarea:focus{
+    outline:none;
+    border-color:#0d6efd;
+    box-shadow:0 0 0 3px rgba(13,110,253,.15);
+}
+
+.btn,
+#applyForm button{
+    width:100%;
+    background:#0d6efd;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:14px;
+    margin-top:25px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover,
+#applyForm button:hover{
+    background:#0b5ed7;
+}
+
+footer{
+    background:#0d6efd;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+@media (min-width:768px){
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+}
