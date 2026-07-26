@@ -48,9 +48,77 @@
 </div>
 
 <br>
+<form id="applyForm">
 
+<h3>📝 আবেদন ফরম</h3>
 
+<label>পরীক্ষার্থীর নাম (বাংলায়)</label>
+<input type="text" id="name_bn" required>
 
+<label>Name (English)</label>
+<input type="text" id="name_en" required>
+
+<label>পিতার নাম</label>
+<input type="text" id="father" required>
+
+<label>মাতার নাম</label>
+<input type="text" id="mother" required>
+
+<label>শিক্ষা প্রতিষ্ঠানের নাম</label>
+<input type="text" id="school" required>
+
+<label>শ্রেণি</label>
+
+<select id="class" required>
+
+<option value="">শ্রেণি নির্বাচন করুন</option>
+
+<option>৪র্থ</option>
+<option>৫ম</option>
+<option>৬ষ্ঠ</option>
+<option>৭ম</option>
+<option>৮ম</option>
+<option>৯ম</option>
+<option>১০ম</option>
+
+</select>
+
+<label>জন্ম তারিখ</label>
+<input type="date" id="dob" required>
+
+<label>মোবাইল নম্বর</label>
+<input type="tel" id="mobile" required>
+
+<label>ঠিকানা</label>
+<textarea id="address" rows="3" required></textarea>
+
+<label>পেমেন্ট মাধ্যম</label>
+
+<select id="payment_method" required>
+
+<option value="">নির্বাচন করুন</option>
+
+<option>বিকাশ</option>
+
+<option>নগদ</option>
+
+</select>
+
+<label>যে নম্বর থেকে বিকাশ/নগদে টাকা পাঠানো হয়েছে</label>
+
+<input type="text" id="payment_number" placeholder="01XXXXXXXXX" required>
+
+<p style="color:red;font-weight:bold;">
+⚠️ রেজিস্ট্রেশন ফি প্রদান না করলে আবেদন গ্রহণ করা হবে না।
+</p>
+
+<button type="submit" class="btn">
+আবেদন জমা দিন
+</button>
+
+</form>
+
+<script src="script.js"></script>
 </section>
 <section class="container">
 
