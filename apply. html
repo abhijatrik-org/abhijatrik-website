@@ -1,1 +1,125 @@
-.
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Apply | Ovijatrik</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+<p>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং</p>
+</div>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="apply.html">Online Apply</a>
+<a href="syllabus.html">Syllabus</a>
+</nav>
+
+<section class="container">
+
+<h2>📝 Online Apply</h2>
+
+<p>
+৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং-এর অনলাইন আবেদন ফরম।
+</p>
+
+<div class="card">
+
+<h3>আবেদন ফি</h3>
+
+<p><strong>ফি:</strong> ১০০ টাকা</p>
+
+<p><strong>বিকাশ:</strong> 01718377229</p>
+
+<p><strong>নগদ:</strong> 01718377229</p>
+
+<p style="color:red;">
+⚠️ রেজিস্ট্রেশন ফি প্রদান না করলে আবেদনটি গ্রহণ করা হবে না।
+</p>
+
+</div>
+
+<br>
+
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLSdnaBENhhpnMJT1TvqkI8DGP86HOQK7HoxzK2Ck4wlBb50d5w/viewform?embedded=true"
+width="100%"
+height="2200"
+frameborder="0"
+marginheight="0"
+marginwidth="0">
+Loading…
+</iframe>
+
+</section>
+<section class="container">
+
+<h2>📖 শ্রেণিভিত্তিক সিলেবাস</h2>
+
+<p>
+আপনার শ্রেণি অনুযায়ী সিলেবাস (PDF) ডাউনলোড করুন।
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>📘 ৪র্থ শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📗 ৫ম শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📙 ৬ষ্ঠ শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📕 ৭ম শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📒 ৮ম শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📔 ৯ম শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>📓 ১০ম শ্রেণি</h3>
+<a href="#">Download PDF</a>
+</div>
+
+</div>
+
+</section>
+<footer>
+
+<div class="container">
+
+<p>
+© ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
+সকল স্বত্ব সংরক্ষিত।
+</p>
+
+</div>
+
+</footer>
+
+</body>
+</html>
