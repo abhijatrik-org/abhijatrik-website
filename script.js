@@ -68,7 +68,9 @@ font-weight:bold;
 </div>
 `;
 
-            window.location.href = "syllabus.html";
+            setTimeout(() => {
+    window.location.href = "syllabus.html";
+}, 3000);
 
         }else{
 
