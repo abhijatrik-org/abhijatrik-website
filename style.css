@@ -310,3 +310,23 @@ footer{
 header{
     text-align:center;
 }
+header{
+    padding:40px 20px;
+}
+
+nav{
+    margin-top:0;
+}
+
+nav a{
+    display:inline-block;
+    margin:8px;
+}
+
+@media (max-width:768px){
+    nav a{
+        display:block;
+        width:90%;
+        margin:10px auto;
+    }
+}
