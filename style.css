@@ -41,10 +41,13 @@ nav{
 }
 
 nav a{
-    color:#0056b3;
+    color:#fff;
     text-decoration:none;
-    font-weight:bold;
     margin:0 15px;
+    font-weight:bold;
+    padding:8px 12px;
+    border-radius:6px;
+    transition:0.3s;
 }
 
 nav a:hover{
