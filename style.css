@@ -281,3 +281,29 @@ footer{
     display:block;
     margin:0 auto 15px;
 }
+.banner{
+    width:100%;
+    overflow:hidden;
+}
+
+.banner img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    display:block;
+}
+
+.logo{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    margin-top:-70px;
+    background:#fff;
+    padding:6px;
+    border:4px solid #fff;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+header{
+    text-align:center;
+}
