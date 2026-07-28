@@ -74,7 +74,7 @@ nav a:hover{
 
 .btn{
     display:inline-block;
-    background:#0056b3;
+   background:#1B5E20;
     color:#fff;
     text-decoration:none;
     padding:12px 28px;
@@ -83,7 +83,8 @@ nav a:hover{
 }
 
 .btn:hover{
-    background:#003d80;
+.btn:hover{
+    background:#0D3B12;
 }
 .about,
 .services,
