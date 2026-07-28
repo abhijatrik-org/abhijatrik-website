@@ -41,28 +41,30 @@ header p{
     font-size:18px;
 }
 
-.banner{
-    position:relative;
-}
+/* =========================
+   LOGO
+========================= */
 
 .logo{
-    position:absolute;
-    top:20px;
-    left:30px;
-    width:90px;
-    height:90px;
+    width:100px;
+    height:100px;
     border-radius:50%;
-    object-fit:cover;
     background:#fff;
-    z-index:10;
+    padding:6px;
+    border:4px solid #fff;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+    margin:-60px auto 15px;
+    display:block;
 }
 
-.banner-text{
-    position:absolute;
-    top:20px;
-    left:140px;
-    color:#fff;
-    z-index:10;
+/* =========================
+   BANNER
+========================= */
+
+.banner{
+    position:relative;
+    width:100%;
+    overflow:hidden;
 }
 
 .banner img{
@@ -321,166 +323,6 @@ footer{
 
     .banner img{
     height:150px;
-}
-
-}
-/* ===== Banner V2 ===== */
-
-.hero-banner{
-    position:relative;
-    height:220px;
-    overflow:hidden;
-}
-
-.hero-banner img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    display:flex;
-    align-items:center;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    margin-left:40px;
-}
-
-.hero-logo{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    border:4px solid #fff;
-    background:#fff;
-}
-
-.brand-text{
-    margin-left:20px;
-    color:#fff;
-}
-
-.brand-text h1{
-    font-size:32px;
-    margin:0;
-}
-
-.brand-text p{
-    margin-top:8px;
-}
-
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-@media(max-width:768px){
-
-.hero-banner{
-    height:160px;
-}
-
-.brand{
-    margin-left:15px;
-}
-
-.hero-logo{
-    width:60px;
-    height:60px;
-}
-
-.brand-text h1{
-    font-size:18px;
-}
-
-.brand-text p{
-    font-size:12px;
-}
-
-}
-/* Banner Overlay */
-
-.banner-overlay{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.35);
-
-    display:flex;
-    align-items:center;
-
-    padding-left:40px;
-}
-
-.banner-text{
-
-    color:#fff;
-
-    margin-left:20px;
-
-}
-
-.banner-text h1{
-
-    font-size:32px;
-
-    margin-bottom:8px;
-
-}
-
-.banner-text p{
-
-    font-size:17px;
-
-}
-
-.logo{
-
-    width:90px;
-
-    height:90px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-}
-
-@media(max-width:768px){
-
-.banner-overlay{
-
-    padding-left:15px;
-
-}
-
-.banner-text h1{
-
-    font-size:20px;
-
-}
-
-.banner-text p{
-
-    font-size:12px;
-
-}
-
-.logo{
-
-    width:60px;
-
-    height:60px;
-
 }
 
 }
