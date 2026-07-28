@@ -71,23 +71,7 @@ header p{
     object-fit:cover;
     display:block;
 }
-.banner-text{
-    position:absolute;
-    top:20px;
-    left:140px;
-    color:#fff;
-    z-index:10;
-}
 
-.banner-text h1{
-    font-size:32px;
-    margin:0;
-}
-
-.banner-text p{
-    margin-top:8px;
-    font-size:16px;
-}
 /* =========================
    NAVIGATION
 ========================= */
