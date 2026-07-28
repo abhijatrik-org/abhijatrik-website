@@ -1,6 +1,11 @@
-/* =========================
-   OVIJATRIK STYLE.CSS V3.0
-========================= */
+/* ===================================
+   OVIJATRIK WEBSITE V4.0
+=================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
+/* Reset */
 
 *{
     margin:0;
@@ -8,321 +13,557 @@
     box-sizing:border-box;
 }
 
+/* Body */
+
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f7fb;
+
+    font-family:'Noto Sans Bengali',sans-serif;
+
+    background:#F4F7FA;
+
     color:#333;
-    line-height:1.6;
+
+    line-height:1.7;
+
 }
+
+/* Container */
 
 .container{
+
     width:90%;
+
     max-width:1200px;
+
     margin:auto;
+
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ==========================
+        HERO BANNER
+========================== */
 
-header{
-    background:#0056b3;
-    color:#fff;
-    text-align:center;
-    padding:40px 20px;
-}
+.hero-banner{
 
-header h1{
-    font-size:34px;
-    margin-bottom:10px;
-}
-
-header p{
-    font-size:18px;
-}
-
-/* =========================
-   LOGO
-========================= */
-
-.logo{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:#fff;
-    padding:6px;
-    border:4px solid #fff;
-    box-shadow:0 4px 15px rgba(0,0,0,.2);
-    margin:-60px auto 15px;
-    display:block;
-}
-
-/* =========================
-   BANNER
-========================= */
-
-.banner{
     position:relative;
+
     width:100%;
+
+    height:200px;
+
     overflow:hidden;
+
 }
 
-.banner img{
+/* Banner Image */
+
+.hero-banner img{
+
     width:100%;
-    height:170px;
+
+    height:100%;
+
     object-fit:cover;
+
     display:block;
+
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* Overlay */
+
+.overlay{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+/* Brand */
+
+.brand{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+/* Logo */
+
+.hero-logo{
+
+    width:85px !important;
+
+    height:85px !important;
+
+    border-radius:50%;
+
+    border:4px solid #fff;
+
+    background:#fff;
+
+    padding:4px;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+/* Text */
+
+.brand-text{
+
+    margin-left:20px;
+
+    color:#fff;
+
+}
+
+.brand-text h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.brand-text p{
+
+    font-size:17px;
+
+    opacity:.95;
+
+}
+/* ==========================
+        NAVIGATION
+========================== */
 
 nav{
-   background:#006973;
+
+    background:#006973;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
     text-align:center;
-    padding:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
+
+    padding:14px 10px;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+
 }
 
 nav a{
+
     display:inline-block;
+
     color:#fff;
+
     text-decoration:none;
-    font-weight:bold;
+
+    font-size:15px;
+
+    font-weight:600;
+
     margin:6px;
-    padding:10px 14px;
-    border-radius:6px;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
     transition:.3s;
+
 }
 
 nav a:hover{
-    background:#004D52;
+
+    background:#ffffff;
+
+    color:#006973;
+
 }
-/* =========================
-   HERO SECTION
-========================= */
+
+/* ==========================
+        HERO
+========================== */
 
 .hero{
+
+    background:#fff;
+
     text-align:center;
-    background:#ffffff;
+
     padding:70px 20px;
+
 }
 
 .hero h2{
-    font-size:38px;
-    color:#0056b3;
+
+    font-size:40px;
+
+    color:#0B4F8A;
+
     margin-bottom:15px;
+
+    font-weight:700;
+
 }
 
 .hero p{
+
     font-size:20px;
-    margin-bottom:25px;
+
+    color:#555;
+
+    margin-bottom:35px;
+
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* Button Group */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+/* Button */
 
 .btn{
+
     display:inline-block;
-    background:#0056b3;
+
+    background:#0B4F8A;
+
     color:#fff;
+
     text-decoration:none;
-    padding:12px 28px;
-    border-radius:6px;
-    margin:8px;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
     transition:.3s;
+
+    box-shadow:0 6px 18px rgba(11,79,138,.25);
+
 }
 
 .btn:hover{
-    background:#003d80;
-}
 
-/* =========================
-   CONTENT SECTION
-========================= */
+    background:#006973;
+
+    transform:translateY(-3px);
+
+}
+/* ==========================
+        SECTION
+========================== */
 
 .about,
 .services,
 .notice{
-    background:#fff;
+
     width:90%;
+
     max-width:1200px;
-    margin:30px auto;
-    padding:40px 20px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+    margin:35px auto;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:45px 30px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
 }
 
 .about h2,
 .services h2,
 .notice h2{
-    color:#0056b3;
+
     text-align:center;
-    margin-bottom:20px;
+
+    color:#0B4F8A;
+
+    margin-bottom:22px;
+
+    font-size:30px;
+
 }
 
-/* =========================
-   CARDS
-========================= */
+.about p{
+
+    text-align:center;
+
+    font-size:17px;
+
+    color:#555;
+
+}
+
+/* ==========================
+        CARDS
+========================== */
 
 .cards{
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
 }
 
 .card{
-    width:280px;
-    background:#f8f9fa;
-    border-radius:10px;
-    padding:20px;
+
+    background:#fff;
+
+    border:1px solid #E6EEF5;
+
+    border-radius:14px;
+
+    padding:30px 25px;
+
     text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+
 }
 
 .card h3{
-    color:#0056b3;
-    margin-bottom:12px;
+
+    color:#0B4F8A;
+
+    margin-bottom:15px;
+
+    font-size:22px;
+
 }
 
 .card p{
-    margin-bottom:15px;
-}
-/* =========================
-   APPLY FORM
-========================= */
 
-#applyForm{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
+    color:#666;
 
-#applyForm label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:6px;
-    font-weight:bold;
-}
+    margin-bottom:20px;
 
-#applyForm input,
-#applyForm select,
-#applyForm textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #d0d7de;
-    border-radius:8px;
     font-size:15px;
+
 }
 
-#applyForm input:focus,
-#applyForm select:focus,
-#applyForm textarea:focus{
-    outline:none;
-    border-color:#0056b3;
-    box-shadow:0 0 0 3px rgba(0,86,179,.15);
-}
-
-#applyForm button{
-    width:100%;
-    background:#0056b3;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:14px;
-    margin-top:20px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-}
-
-#applyForm button:hover{
-    background:#003d80;
-}
-
-/* =========================
-   SCHOLARSHIP PAGE BUTTON
-========================= */
+/* Scholarship Buttons */
 
 .card .btn{
+
     background:#1B5E20;
+
+    box-shadow:none;
+
 }
 
 .card .btn:hover{
-    background:#0D3B12;
-}
 
-/* =========================
-   NOTICE
-========================= */
+    background:#145A32;
+
+}
+/* ==========================
+        NOTICE
+========================== */
 
 .notice ul{
-    padding-left:20px;
+
+    list-style:none;
+
+    padding:0;
+
 }
 
 .notice li{
-    margin-bottom:10px;
+
+    background:#F8FBFF;
+
+    border-left:5px solid #0B4F8A;
+
+    padding:15px 18px;
+
+    margin-bottom:15px;
+
+    border-radius:8px;
+
+    color:#444;
+
 }
-/* =========================
-   FOOTER
-========================= */
+
+/* ==========================
+        FOOTER
+========================== */
 
 footer{
-    background:#0056b3;
+
+    background:#0B4F8A;
+
     color:#fff;
+
     text-align:center;
-    padding:20px;
-    margin-top:40px;
+
+    padding:30px 20px;
+
+    margin-top:50px;
+
 }
 
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
+footer p{
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* ==========================
+        MOBILE
+========================== */
 
 @media (max-width:768px){
 
-    header h1{
-        font-size:26px;
-    }
+.hero-banner{
 
-    header p{
-        font-size:16px;
-    }
-
-    .hero h2{
-        font-size:28px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    nav a{
-        display:block;
-        width:90%;
-        margin:10px auto;
-    }
-
-    .card{
-        width:100%;
-    }
-
-    .btn{
-        display:block;
-        width:90%;
-        margin:10px auto;
-        text-align:center;
-    }
-
-    
-
-    .banner img{
     height:150px;
+
+}
+
+.hero-logo{
+
+    width:65px !important;
+
+    height:65px !important;
+
+}
+
+.brand-text{
+
+    margin-left:14px;
+
+}
+
+.brand-text h1{
+
+    font-size:22px;
+
+}
+
+.brand-text p{
+
+    font-size:13px;
+
+}
+
+nav a{
+
+    display:block;
+
+    width:92%;
+
+    margin:8px auto;
+
+}
+
+.hero{
+
+    padding:45px 15px;
+
+}
+
+.hero h2{
+
+    font-size:28px;
+
+}
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.btn{
+
+    width:90%;
+
+    text-align:center;
+
+}
+
+.about,
+.services,
+.notice{
+
+    padding:30px 20px;
+
+}
+
+.about h2,
+.services h2,
+.notice h2{
+
+    font-size:24px;
+
 }
 
 }
