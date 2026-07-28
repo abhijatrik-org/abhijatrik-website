@@ -326,3 +326,84 @@ footer{
 }
 
 }
+/* ===== Banner V2 ===== */
+
+.hero-banner{
+    position:relative;
+    height:220px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    display:flex;
+    align-items:center;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    margin-left:40px;
+}
+
+.hero-logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:4px solid #fff;
+    background:#fff;
+}
+
+.brand-text{
+    margin-left:20px;
+    color:#fff;
+}
+
+.brand-text h1{
+    font-size:32px;
+    margin:0;
+}
+
+.brand-text p{
+    margin-top:8px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+
+.hero-banner{
+    height:160px;
+}
+
+.brand{
+    margin-left:15px;
+}
+
+.hero-logo{
+    width:60px;
+    height:60px;
+}
+
+.brand-text h1{
+    font-size:18px;
+}
+
+.brand-text p{
+    font-size:12px;
+}
+
+}
