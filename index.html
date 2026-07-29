@@ -1,66 +1,149 @@
 <!DOCTYPE html>
 <html lang="bn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
+    <title>অভিযাত্রিক সমাজকল্যাণ সংস্থা | ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
 
-    <!-=========================
-         BANNER SECTION
-    ========================= -->
-    <section class="banner">
-        <img src="banner.jpg.jpeg" alt="Banner">
-    </section>
+    <!-- Professional Scrolling Notice Bar -->
+    <div class="notice-bar">
+        <div class="container notice-flex">
+            <div class="notice-title">সর্বশেষ সংবাদ:</div>
+            <div class="notice-content">
+                <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    📢 ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ এর অনলাইন রেজিস্ট্রেশন চলছে... শেষ তারিখ: ১৫ই সেপ্টেম্বর ২০২৬। সিলেবাস ওয়েবসাইট থেকে ডাউনলোড করা যাবে।
+                </marquee>
+            </div>
+        </div>
+    </div>
 
- <!-- =========================
-         HEADER SECTION
-    ========================= -->
+    <!-- Header Section -->
     <header>
         <div class="container header-content">
-            <div class="logo-wrapper">
-                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="logo">
-            </div>
-            <div class="title-wrapper">
-                <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
-                <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
+            <div class="logo-area">
+                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="main-logo">
+                <div class="brand-text">
+                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                    <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
+                </div>
             </div>
         </div>
     </header>
 
- <!-- =========================
-         NAVIGATION
-    ========================= -->
-    <nav>
+    <!-- Navigation -->
+    <nav id="navbar">
         <div class="container">
-            <a href="#">Home</a>
-            <a href="#about">About</a>
-            <a href="apply.html">Apply Online</a>
-            <a href="syllabus.html">Syllabus</a>
-            <a href="result.html">Result</a>
-            <a href="scholarship.html">Scholarship Holders</a>
-            <a href="contact.html">Contact</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">হোম</a></li>
+                <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                <li><a href="apply.html">অনলাইন আবেদন</a></li>
+                <li><a href="syllabus.html">সিলেবাস</a></li>
+                <li><a href="result.html">ফলাফল</a></li>
+                <li><a href="scholarship.html">বৃত্তিপ্রাপ্তদের তালিকা</a></li>
+                <li><a href="contact.html">যোগাযোগ</a></li>
+            </ul>
         </div>
     </nav>
 
-<!-- =========================
-         HERO SECTION
-    ========================= -->
-    <section class="hero">
-        <div class="container">
-            <h2>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h2>
-            <p>৪র্থ থেকে ১০ম শ্রেণির শিক্ষার্থীদের জন্য</p>
-            <div class="hero-btns">
-                <a href="apply.html" class="btn">Apply Online</a>
-                <a href="result.html" class="btn btn-secondary">Check Result</a>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content-box">
+                    <h2>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h2>
+                    <h3>শিক্ষার্থীদের মেধা বিকাশে আমরা বদ্ধপরিকর। ৪র্থ থেকে ১০ম শ্রেণির শিক্ষার্থীরা এখনই অংশগ্রহণ করো।</h3>
+                    <div class="hero-btns">
+                        <a href="apply.html" class="btn btn-apply"><i class="fas fa-edit"></i> আবেদন করুন</a>
+                        <a href="syllabus.html" class="btn btn-syllabus"><i class="fas fa-file-download"></i> সিলেবাস ডাউনলোড</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-</body>
+    <!-- Impact Stats Section -->
+    <section class="impact-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="stat-info">
+                        <h3>৫০০+</h3>
+                        <p>বৃত্তিপ্রাপ্ত শিক্ষার্থী</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-school"></i></div>
+                    <div class="stat-info">
+                        <h3>৩০+</h3>
+                        <p>অংশগ্রহণকারী স্কুল</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="stat-info">
+                        <h3>৫০+</h3>
+                        <p>স্বেচ্ছাসেবী</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section (Keeping Previous Info) -->
+    <section id="about" class="about-us">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-heading">সংস্থার লক্ষ্য ও উদ্দেশ্য</h2>
+                    <p>অভিযাত্রিক সমাজকল্যাণ সংস্থা একটি অরাজনৈতিক এবং অলাভজনক স্বেচ্ছাসেবী সংগঠন। আমরা শিক্ষার আলো ছড়িয়ে দিতে এবং মেধাবী শিক্ষার্থীদের অনুপ্রেরণা দিতে কাজ করে যাচ্ছি। আমাদের মূল লক্ষ্য একটি শিক্ষিত ও সচেতন সমাজ গড়ে তোলা।</p>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i> মেধাবী শিক্ষার্থীদের বৃত্তি প্রদান।</li>
+                        <li><i class="fas fa-check"></i> শিক্ষা উপকরণ বিতরণ।</li>
+                        <li><i class="fas fa-check"></i> সামাজিক সচেতনতামূলক কার্যক্রম।</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="banner.jpg.jpeg" alt="Activities">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h4>অভিযাত্রিক সংস্থা</h4>
+                    <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন। মানবতার সেবায় আমরা নিবেদিত।</p>
+                </div>
+                <div class="footer-col">
+                    <h4>দ্রুত লিঙ্ক</h4>
+                    <ul>
+                        <li><a href="apply.html">অনলাইন আবেদন</a></li>
+                        <li><a href="result.html">ফলাফল</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>আমাদের সাথে থাকুন</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা | সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
