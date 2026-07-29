@@ -1,329 +1,66 @@
-/* =========================
-   OVIJATRIK STYLE.CSS V3.0
-========================= */
+<!DOCTYPE html>
+<html lang="bn">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f7fb;
-    color:#333;
-    line-height:1.6;
-}
+<body>
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
+    <!-=========================
+         BANNER SECTION
+    ========================= -->
+    <section class="banner">
+        <img src="banner.jpg.jpeg" alt="Banner">
+    </section>
 
-/* =========================
-   HEADER
-========================= */
+ <!-- =========================
+         HEADER SECTION
+    ========================= -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-wrapper">
+                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="logo">
+            </div>
+            <div class="title-wrapper">
+                <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
+            </div>
+        </div>
+    </header>
 
-header{
-    background:#0056b3;
-    color:#fff;
-    text-align:center;
-    padding:40px 20px;
-}
+ <!-- =========================
+         NAVIGATION
+    ========================= -->
+    <nav>
+        <div class="container">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="apply.html">Apply Online</a>
+            <a href="syllabus.html">Syllabus</a>
+            <a href="result.html">Result</a>
+            <a href="scholarship.html">Scholarship Holders</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
 
-header h1{
-    font-size:34px;
-    margin-bottom:10px;
-}
+<!-- =========================
+         HERO SECTION
+    ========================= -->
+    <section class="hero">
+        <div class="container">
+            <h2>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h2>
+            <p>৪র্থ থেকে ১০ম শ্রেণির শিক্ষার্থীদের জন্য</p>
+            <div class="hero-btns">
+                <a href="apply.html" class="btn">Apply Online</a>
+                <a href="result.html" class="btn btn-secondary">Check Result</a>
+            </div>
+        </div>
+    </section>
 
-header p{
-    font-size:18px;
-}
+</body>
 
-/* =========================
-   LOGO
-========================= */
-
-.logo{
-    width:100px;
-    height:100px;
-    object-fit:contain;
-    border-radius:50%;
-    background:#fff;
-    padding:6px;
-    border:4px solid #fff;
-    box-shadow:0 4px 15px rgba(0,0,0,.2);
-    margin:-60px auto 15px;
-    display:block;
-}
-
-/* =========================
-   BANNER
-========================= */
-
-.banner{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-}
-
-.banner img{
-    width:100%;
-    height:170px;
-    object-fit:cover;
-    display:block;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-nav{
-   background:#006973;
-    text-align:center;
-    padding:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
-}
-
-nav a{
-    display:inline-block;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    margin:6px;
-    padding:10px 14px;
-    border-radius:6px;
-    transition:.3s;
-}
-
-nav a:hover{
-    background:#004D52;
-}
-/* =========================
-   HERO SECTION
-========================= */
-
-.hero{
-    text-align:center;
-    background:#ffffff;
-    padding:70px 20px;
-}
-
-.hero h2{
-    font-size:38px;
-    color:#0056b3;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:20px;
-    margin-bottom:25px;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.btn{
-    display:inline-block;
-    background:#0056b3;
-    color:#fff;
-    text-decoration:none;
-    padding:12px 28px;
-    border-radius:6px;
-    margin:8px;
-    transition:.3s;
-}
-
-.btn:hover{
-    background:#003d80;
-}
-
-/* =========================
-   CONTENT SECTION
-========================= */
-
-.about,
-.services,
-.notice{
-    background:#fff;
-    width:90%;
-    max-width:1200px;
-    margin:30px auto;
-    padding:40px 20px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-.about h2,
-.services h2,
-.notice h2{
-    color:#0056b3;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
-
-.card{
-    width:280px;
-    background:#f8f9fa;
-    border-radius:10px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.card h3{
-    color:#0056b3;
-    margin-bottom:12px;
-}
-
-.card p{
-    margin-bottom:15px;
-}
-/* =========================
-   APPLY FORM
-========================= */
-
-#applyForm{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-#applyForm label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:6px;
-    font-weight:bold;
-}
-
-#applyForm input,
-#applyForm select,
-#applyForm textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #d0d7de;
-    border-radius:8px;
-    font-size:15px;
-}
-
-#applyForm input:focus,
-#applyForm select:focus,
-#applyForm textarea:focus{
-    outline:none;
-    border-color:#0056b3;
-    box-shadow:0 0 0 3px rgba(0,86,179,.15);
-}
-
-#applyForm button{
-    width:100%;
-    background:#0056b3;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:14px;
-    margin-top:20px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-}
-
-#applyForm button:hover{
-    background:#003d80;
-}
-
-/* =========================
-   SCHOLARSHIP PAGE BUTTON
-========================= */
-
-.card .btn{
-    background:#1B5E20;
-}
-
-.card .btn:hover{
-    background:#0D3B12;
-}
-
-/* =========================
-   NOTICE
-========================= */
-
-.notice ul{
-    padding-left:20px;
-}
-
-.notice li{
-    margin-bottom:10px;
-}
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    background:#0056b3;
-    color:#fff;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media (max-width:768px){
-
-    header h1{
-        font-size:26px;
-    }
-
-    header p{
-        font-size:16px;
-    }
-
-    .hero h2{
-        font-size:28px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    nav a{
-        display:block;
-        width:90%;
-        margin:10px auto;
-    }
-
-    .card{
-        width:100%;
-    }
-
-    .btn{
-        display:block;
-        width:90%;
-        margin:10px auto;
-        text-align:center;
-    }
-
-    
-
-    .banner img{
-    height:150px;
-}
-
-}
+</html>
