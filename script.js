@@ -1,8 +1,11 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMI60YqjlUyUAmMD1lvuaorn2sg4bg908-WBuyoOwMDMbFB_VxNXC3niy5zuSj0-F7/exec";
 
 document.getElementById("applyForm").addEventListener("submit", async function(e) {
-
     e.preventDefault();
+
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> প্রসেসিং হচ্ছে...';
 
     const data = {
         name_bn: document.getElementById("name_bn").value,
@@ -19,7 +22,6 @@ document.getElementById("applyForm").addEventListener("submit", async function(e
     };
 
     try {
-
         const response = await fetch(SCRIPT_URL, {
             method: "POST",
             body: JSON.stringify(data)
@@ -28,60 +30,39 @@ document.getElementById("applyForm").addEventListener("submit", async function(e
         const result = await response.json();
 
         if(result.status === "success"){
-
-           document.getElementById("applyForm").innerHTML = `
-<div style="
-background:#f0fff4;
-border:2px solid #28a745;
-padding:35px;
-border-radius:12px;
-text-align:center;
-margin-top:20px;
-">
-
-<h2 style="color:#28a745;">
-✅ আবেদন সফলভাবে সম্পন্ন হয়েছে
-</h2>
-
-<p style="font-size:18px;">
-আপনার আবেদন সফলভাবে গ্রহণ করা হয়েছে।
-</p>
-
-<p>
-এখন আপনার শ্রেণির সিলেবাস ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।
-</p>
-
-<a href="syllabus.html"
-style="
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:#0d6efd;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-">
-📖 সিলেবাস ডাউনলোড করুন
-</a>
-
-</div>
-`;
-
-            setTimeout(() => {
-    window.location.href = "syllabus.html";
-}, 3000);
-
-        }else{
-
-            alert("আবেদন জমা হয়নি।");
-
+            Swal.fire({
+                title: 'আবেদন সফল হয়েছে!',
+                text: 'আপনার আবেদন সফলভাবে গ্রহণ করা হয়েছে। আমরা ভেরিফাই করে আপনাকে মেসেজ বা কল করে জানিয়ে দেব। এখন আপনি সিলেবাস ডাউনলোড করতে পারেন।',
+                icon: 'success',
+                confirmButtonText: 'সিলেবাস ডাউনলোড করুন',
+                confirmButtonColor: '#28a745',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "syllabus.html";
+                }
+            });
+            
+            document.getElementById("applyForm").reset();
+        } else {
+            Swal.fire({
+                title: 'দুঃখিত!',
+                text: 'আবেদন জমা হয়নি। দয়া করে আবার চেষ্টা করুন।',
+                icon: 'error',
+                confirmButtonText: 'ঠিক আছে',
+                confirmButtonColor: '#0056b3'
+            });
         }
-
     } catch(err){
-
-        alert("সার্ভারের সাথে সংযোগ করা যায়নি।");
-
+        Swal.fire({
+            title: 'এরর!',
+            text: 'সার্ভারের সাথে সংযোগ করা যায়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।',
+            icon: 'warning',
+            confirmButtonText: 'ঠিক আছে',
+            confirmButtonColor: '#ffc107'
+        });
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'আবেদন জমা দিন <i class="fas fa-paper-plane"></i>';
     }
-
 });
