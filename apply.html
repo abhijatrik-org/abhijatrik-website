@@ -6,6 +6,8 @@
     <title>অনলাইন আবেদন | ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 for professional popups -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -138,12 +140,12 @@
                 <div class="agreement-box">
                     <label>
                         <input type="checkbox" id="agree" required>
-                        <span>আমি নিশ্চিত করছি যে, উপরোক্ত সকল তথ্য সঠিক এবং আবেদন ফি (১০০ টাকা) বিকাশ/নগদের মাধ্যমে প্রদান করেছি। ভুল তথ্য প্রদান করলে আবেদন বাতিল হতে পারে।</span>
+                        <span>আমি নিশ্চিত করছি যে, উপরোক্ত সকল তথ্য সঠিক এবং আবেদন ফি (১০০ টাকা) বিকাশ/নগদের মাধ্যমে প্রদান করেছি। ভুল তথ্য প্রদান করছি না।</span>
                     </label>
                 </div>
 
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-submit">আবেদন জমা দিন <i class="fas fa-paper-plane"></i></button>
+                    <button type="submit" id="submitBtn" class="btn btn-submit">আবেদন জমা দিন <i class="fas fa-paper-plane"></i></button>
                 </div>
             </form>
         </div>
@@ -165,7 +167,6 @@
         .underline { width: 60px; height: 4px; background: var(--secondary); margin: 10px auto 30px; border-radius: 2px; }
         .section-title { text-align: center; margin-bottom: 40px; }
         
-        /* Payment Card Style */
         .payment-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #eee; }
         .payment-header { background: #f8f9fa; padding: 15px 25px; border-bottom: 1px solid #eee; }
         .payment-header h3 { color: var(--primary); font-size: 20px; }
@@ -173,7 +174,6 @@
         .payment-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; }
         .payment-warning { margin-top: 15px; color: #d9534f; font-weight: 700; font-size: 15px; }
         
-        /* Form Wrapper Style */
         .form-wrapper { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .form-header { background: var(--primary); color: #fff; padding: 20px 25px; }
         .pro-form { padding: 30px; }
@@ -193,6 +193,7 @@
         .form-footer { text-align: center; }
         .btn-submit { background: var(--secondary); color: #fff; border: none; padding: 15px 45px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; transition: 0.3s; }
         .btn-submit:hover { background: #218838; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .btn-submit:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
         @media (max-width: 768px) {
             .form-grid { grid-template-columns: 1fr; }
