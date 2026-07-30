@@ -1,197 +1,204 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Apply | Ovijatrik</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অনলাইন আবেদন | ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
 
-<header>
-<div class="container">
-<h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
-<p>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং</p>
-</div>
-</header>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="main-logo">
+                <div class="brand-text">
+                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                    <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="apply.html">Online Apply</a>
-<a href="syllabus.html">Syllabus</a>
-</nav>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="apply.html" class="active">Apply Online</a></li>
+                <li><a href="syllabus.html">Syllabus</a></li>
+                <li><a href="admit.html">Admit Card</a></li>
+                <li><a href="result.html">Result</a></li>
+                <li><a href="scholarship.html">Scholarship Holders</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section class="container">
+    <!-- Page Content -->
+    <section class="container page-section">
+        <div class="section-title">
+            <h2>📝 Online Apply</h2>
+            <p>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং-এর অনলাইন আবেদন ফরম।</p>
+            <div class="underline"></div>
+        </div>
 
-<h2>📝 Online Apply</h2>
+        <!-- Payment Info Card -->
+        <div class="payment-card">
+            <div class="payment-header">
+                <h3><i class="fas fa-money-check-alt"></i> আবেদন ফি ও পেমেন্ট তথ্য</h3>
+            </div>
+            <div class="payment-body">
+                <div class="payment-item">
+                    <span>আবেদন ফি:</span>
+                    <strong>১০০ টাকা</strong>
+                </div>
+                <div class="payment-item">
+                    <span>বিকাশ (Personal):</span>
+                    <strong>01718377229</strong>
+                </div>
+                <div class="payment-item">
+                    <span>নগদ (Personal):</span>
+                    <strong>01718377229</strong>
+                </div>
+                <div class="payment-warning">
+                    <i class="fas fa-exclamation-triangle"></i> রেজিস্ট্রেশন ফি প্রদান না করলে আবেদনটি গ্রহণ করা হবে না।
+                </div>
+            </div>
+        </div>
 
-<p>
-৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং-এর অনলাইন আবেদন ফরম।
-</p>
+        <!-- Application Form -->
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h3><i class="fas fa-edit"></i> আবেদন ফরম</h3>
+            </div>
+            <form id="applyForm" class="pro-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>পরীক্ষার্থীর নাম (বাংলায়)</label>
+                        <input type="text" id="name_bn" placeholder="আপনার নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Name (English)</label>
+                        <input type="text" id="name_en" placeholder="Full Name in English" required>
+                    </div>
+                    <div class="form-group">
+                        <label>পিতার নাম</label>
+                        <input type="text" id="father" placeholder="পিতার নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>মাতার নাম</label>
+                        <input type="text" id="mother" placeholder="মাতার নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>শিক্ষা প্রতিষ্ঠানের নাম</label>
+                        <input type="text" id="school" placeholder="স্কুলের নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>শ্রেণি</label>
+                        <select id="class" required>
+                            <option value="">শ্রেণি নির্বাচন করুন</option>
+                            <option>৪র্থ</option>
+                            <option>৫ম</option>
+                            <option>৬ষ্ঠ</option>
+                            <option>৭ম</option>
+                            <option>৮ম</option>
+                            <option>৯ম</option>
+                            <option>১০ম</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>জন্ম তারিখ</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নম্বর</label>
+                        <input type="tel" id="mobile" placeholder="01XXXXXXXXX" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>ঠিকানা</label>
+                        <textarea id="address" rows="3" placeholder="গ্রাম, ডাকঘর, উপজেলা, জেলা লিখুন" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>পেমেন্ট মাধ্যম</label>
+                        <select id="payment_method" required>
+                            <option value="">নির্বাচন করুন</option>
+                            <option>বিকাশ</option>
+                            <option>নগদ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>যে নম্বর থেকে টাকা পাঠানো হয়েছে</label>
+                        <input type="text" id="payment_number" placeholder="01XXXXXXXXX" required>
+                    </div>
+                </div>
 
-<div class="card">
+                <div class="agreement-box">
+                    <label>
+                        <input type="checkbox" id="agree" required>
+                        <span>আমি নিশ্চিত করছি যে, উপরোক্ত সকল তথ্য সঠিক এবং আবেদন ফি (১০০ টাকা) বিকাশ/নগদের মাধ্যমে প্রদান করেছি। ভুল তথ্য প্রদান করলে আবেদন বাতিল হতে পারে।</span>
+                    </label>
+                </div>
 
-<h3>আবেদন ফি</h3>
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-submit">আবেদন জমা দিন <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
 
-<p><strong>ফি:</strong> ১০০ টাকা</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা | সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
 
-<p><strong>বিকাশ:</strong> 01718377229</p>
+    <script src="script.js"></script>
 
-<p><strong>নগদ:</strong> 01718377229</p>
+    <style>
+        .page-section { padding: 60px 0; }
+        .underline { width: 60px; height: 4px; background: var(--secondary); margin: 10px auto 30px; border-radius: 2px; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        
+        /* Payment Card Style */
+        .payment-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #eee; }
+        .payment-header { background: #f8f9fa; padding: 15px 25px; border-bottom: 1px solid #eee; }
+        .payment-header h3 { color: var(--primary); font-size: 20px; }
+        .payment-body { padding: 25px; }
+        .payment-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; }
+        .payment-warning { margin-top: 15px; color: #d9534f; font-weight: 700; font-size: 15px; }
+        
+        /* Form Wrapper Style */
+        .form-wrapper { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .form-header { background: var(--primary); color: #fff; padding: 20px 25px; }
+        .pro-form { padding: 30px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+        
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; font-family: inherit; transition: 0.3s;
+        }
+        .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0,86,179,0.1); outline: none; }
+        
+        .agreement-box { background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 30px 0; border: 1px solid #eee; }
+        .agreement-box label { display: flex; gap: 12px; cursor: pointer; font-size: 15px; }
+        .agreement-box input { width: 20px; height: 20px; margin-top: 3px; }
+        
+        .form-footer { text-align: center; }
+        .btn-submit { background: var(--secondary); color: #fff; border: none; padding: 15px 45px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: #218838; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
-<p style="color:red;">
-⚠️ রেজিস্ট্রেশন ফি প্রদান না করলে আবেদনটি গ্রহণ করা হবে না।
-</p>
-
-</div>
-
-<br>
-<form id="applyForm">
-
-<h3>📝 আবেদন ফরম</h3>
-
-<label>পরীক্ষার্থীর নাম (বাংলায়)</label>
-<input type="text" id="name_bn" required>
-
-<label>Name (English)</label>
-<input type="text" id="name_en" required>
-
-<label>পিতার নাম</label>
-<input type="text" id="father" required>
-
-<label>মাতার নাম</label>
-<input type="text" id="mother" required>
-
-<label>শিক্ষা প্রতিষ্ঠানের নাম</label>
-<input type="text" id="school" required>
-
-<label>শ্রেণি</label>
-
-<select id="class" required>
-
-<option value="">শ্রেণি নির্বাচন করুন</option>
-
-<option>৪র্থ</option>
-<option>৫ম</option>
-<option>৬ষ্ঠ</option>
-<option>৭ম</option>
-<option>৮ম</option>
-<option>৯ম</option>
-<option>১০ম</option>
-
-</select>
-
-<label>জন্ম তারিখ</label>
-<input type="date" id="dob" required>
-
-<label>মোবাইল নম্বর</label>
-<input type="tel" id="mobile" required>
-
-<label>ঠিকানা</label>
-<textarea id="address" rows="3" required></textarea>
-
-<label>পেমেন্ট মাধ্যম</label>
-
-<select id="payment_method" required>
-
-<option value="">নির্বাচন করুন</option>
-
-<option>বিকাশ</option>
-
-<option>নগদ</option>
-
-</select>
-
-<label>যে নম্বর থেকে বিকাশ/নগদে টাকা পাঠানো হয়েছে</label>
-
-<input type="text" id="payment_number" placeholder="01XXXXXXXXX" required>
-
-<p style="color:red;font-weight:bold;">
-⚠️ রেজিস্ট্রেশন ফি প্রদান না করলে আবেদন গ্রহণ করা হবে না।
-</p>
-<div style="margin-top:20px; padding:15px; background:#f8f9fa; border:1px solid #d6d6d6; border-radius:8px;">
-
-<label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
-
-<input type="checkbox" id="agree" required style="margin-top:5px; width:auto;">
-
-<span>
-আমি নিশ্চিত করছি যে, উপরোক্ত সকল তথ্য সঠিক এবং আবেদন ফি (১০০ টাকা) বিকাশ/নগদের মাধ্যমে প্রদান করেছি। ভুল তথ্য প্রদান করলে আবেদন বাতিল হতে পারে।
-</span>
-
-</label>
-
-</div>
-<button type="submit" class="btn">
-আবেদন জমা দিন
-</button>
-
-</form>
-
-<script src="script.js"></script>
-</section>
-<section class="container">
-
-<h2>📖 শ্রেণিভিত্তিক সিলেবাস</h2>
-
-<p>
-আপনার শ্রেণি অনুযায়ী সিলেবাস (PDF) ডাউনলোড করুন।
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>📘 ৪র্থ শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📗 ৫ম শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📙 ৬ষ্ঠ শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📕 ৭ম শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📒 ৮ম শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📔 ৯ম শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-<div class="card">
-<h3>📓 ১০ম শ্রেণি</h3>
-<a href="#">Download PDF</a>
-</div>
-
-</div>
-
-</section>
-<footer>
-
-<div class="container">
-
-<p>
-© ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
-সকল স্বত্ব সংরক্ষিত।
-</p>
-
-</div>
-
-</footer>
-
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .pro-form { padding: 20px; }
+        }
+    </style>
 </body>
 </html>
