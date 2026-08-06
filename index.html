@@ -40,6 +40,7 @@
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="apply.html">Apply Online</a></li>
                 <li><a href="syllabus.html">Syllabus</a></li>
                 <li><a href="admit.html">Admit Card</a></li>
@@ -115,6 +116,81 @@
         </div>
     </section>
 
+    <!-- Filterable Photo Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>📸 ফটো গ্যালারি</h2>
+                <p>আমাদের সংগঠনের বিভিন্ন কার্যক্রমের একঝলক</p>
+                <div class="underline"></div>
+            </div>
+
+            <!-- Gallery Filter Menu -->
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">সব ছবি</button>
+                <button class="filter-btn" data-filter="exam">মেধাবৃত্তি পরীক্ষা</button>
+                <button class="filter-btn" data-filter="award">পুরস্কার বিতরণী</button>
+                <button class="filter-btn" data-filter="tree">বৃক্ষরোপণ</button>
+                <button class="filter-btn" data-filter="sports">খেলাধুলা</button>
+                <button class="filter-btn" data-filter="flood">বন্যাদুর্গতদের সহায়তা</button>
+                <button class="filter-btn" data-filter="picnic">বনভোজন</button>
+                <button class="filter-btn" data-filter="other">অন্যান্য</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- মেধাবৃত্তি পরীক্ষা -->
+                <div class="gallery-item exam">
+                    <img src="banner.jpg.jpeg" alt="Exam" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>মেধাবৃত্তি পরীক্ষা ২০২৪</span>
+                    </div>
+                </div>
+                <!-- পুরস্কার বিতরণী অনুষ্ঠান -->
+                <div class="gallery-item award">
+                    <img src="banner.jpg.jpeg" alt="Award" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>পুরস্কার বিতরণী অনুষ্ঠান</span>
+                    </div>
+                </div>
+                <!-- বৃক্ষরোপণ -->
+                <div class="gallery-item tree">
+                    <img src="banner.jpg.jpeg" alt="Tree" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>বৃক্ষরোপণ কর্মসূচি</span>
+                    </div>
+                </div>
+                <!-- খেলাধুলা -->
+                <div class="gallery-item sports">
+                    <img src="banner.jpg.jpeg" alt="Sports" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>ক্রীড়া প্রতিযোগিতা</span>
+                    </div>
+                </div>
+                <!-- বন্যাদুর্গতদের সহায়তা -->
+                <div class="gallery-item flood">
+                    <img src="banner.jpg.jpeg" alt="Flood" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>বন্যাদুর্গতদের মাঝে ত্রাণ বিতরণ</span>
+                    </div>
+                </div>
+                <!-- বনভোজন -->
+                <div class="gallery-item picnic">
+                    <img src="banner.jpg.jpeg" alt="Picnic" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>বার্ষিক বনভোজন</span>
+                    </div>
+                </div>
+                <!-- অন্যান্য -->
+                <div class="gallery-item other">
+                    <img src="banner.jpg.jpeg" alt="Other" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>অন্যান্য</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -146,5 +222,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript for Filtering -->
+    <script src="script.js"></script>
 </body>
 </html>
