@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (applyForm) {
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMI60YqjlUyUAmMD1lvuaorn2sg4bg908-WBuyoOwMDMbFB_VxNXC3niy5zuSj0-F7/exec";
 
-        applyForm.addEventListener("submit", async function(e) {
+        applyForm.addEventListener("submit", async function(e ) {
             e.preventDefault();
 
             const submitBtn = document.getElementById("submitBtn");
