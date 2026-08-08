@@ -250,7 +250,26 @@
             </div>
         </div>
     </footer>
-
+<!-- মতামত ও পরামর্শ সেকশন -->
+<section style="padding: 40px 20px; background: #f9f9f9; text-align: center; margin-top: 40px; border-radius: 15px;">
+    <div style="max-width: 600px; margin: auto;">
+        <h2 style="color: #0056b3; margin-bottom: 10px;">মতামত ও পরামর্শ</h2>
+        <p style="color: #555; margin-bottom: 20px; line-height: 1.6;">
+            আমাদের সেবামূলক কার্যক্রম উন্নত করতে আপনার সুচিন্তিত মতামত বা অভিযোগ আমাদের জানাতে পারেন। আপনার প্রতিটি মতামত আমাদের পথচলাকে আরও বেগবান করবে। ধন্যবাদ!
+        </p>
+        
+        <!-- Web3Forms অ্যাকশন লিংক এবং আপনার এক্সেস কি -->
+        <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            
+            <!-- আপনার এক্সেস কি এখানে বসানো হয়েছে -->
+            <input type="hidden" name="access_key" value="1bf8acd2-b579-4644-846b-5d2c55fb5c7d">
+            
+            <textarea name="message" rows="5" placeholder="আপনার সুচিন্তিত মতামত বা অভিযোগ এখানে লিখুন..." required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+            
+            <button type="submit" style="padding: 12px; background: #0056b3; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">জমা দিন</button>
+        </form>
+    </div>
+</section>
     <!-- JavaScript for Filtering -->
     <script src="script.js"></script>
 </body>
