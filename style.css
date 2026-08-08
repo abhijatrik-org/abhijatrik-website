@@ -2,7 +2,7 @@
    OVIJATRIK PRO STYLE V4.0
 ========================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap' );
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 
 :root {
     --primary: #0056b3;
@@ -434,6 +434,22 @@ footer {
         object-fit: contain;
     }
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .gallery-item {
+        height: 160px;
+        border-radius: 10px;
+    }
+    .gallery-overlay {
+        font-size: 14px;
+    }
+    .gallery-filter {
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+    .filter-btn {
+        padding: 6px 15px;
+        font-size: 14px;
     }
 }
