@@ -453,3 +453,16 @@ footer {
         font-size: 14px;
     }
 }
+/* হোমপেজে শুরুতে গ্যালারি ছবি লুকানোর জন্য */
+.gallery-grid .gallery-item {
+    display: none;
+}
+
+/* যখন ফিল্টার বাটনে ক্লিক করা হবে তখন ছবি দেখাবে */
+.gallery-grid .gallery-item.show {
+    display: block;
+}
+
+.gallery-grid .gallery-item.hide {
+    display: none;
+}
