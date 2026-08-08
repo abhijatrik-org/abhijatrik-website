@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. Gallery Filtering Logic
+   // 1. Gallery Filtering Logic (Updated for Hidden by Default on Homepage)
     const filterButtons = document.querySelectorAll(".filter-btn");
     const galleryItems = document.querySelectorAll(".gallery-item");
 
@@ -19,18 +19,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 const filterValue = button.getAttribute("data-filter");
 
                 galleryItems.forEach(item => {
-                    if (filterValue === "all" || item.classList.contains(filterValue)) {
+                    if (filterValue === "all") {
                         item.classList.remove("hide");
                         item.classList.add("show");
                     } else {
-                        item.classList.remove("show");
-                        item.classList.add("hide");
+                        if (item.classList.contains(filterValue)) {
+                            item.classList.remove("hide");
+                            item.classList.add("show");
+                        } else {
+                            item.classList.remove("show");
+                            item.classList.add("hide");
+                        }
                     }
                 });
             });
         });
     }
-
     // 2. Online Application Form Submission
     const applyForm = document.getElementById("applyForm");
     if (applyForm) {
