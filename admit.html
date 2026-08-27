@@ -1,205 +1,57 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অ্যাডমিট কার্ড ডাউনলোড | অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-
-    <!-- Header Section -->
-    <header class="no-print">
-        <div class="container header-content">
-            <div class="logo-area">
-                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="main-logo">
-                <div class="brand-text">
-                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
-                    <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav id="navbar" class="no-print">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="apply.html">Apply Online</a></li>
-                <li><a href="syllabus.html">Syllabus</a></li>
-                <li><a href="admit.html" class="active">Admit Card</a></li>
-                <li><a href="result.html">Result</a></li>
-                <li><a href="scholarship.html">Scholarship Holders</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Page Content -->
-    <section class="container page-section no-print" id="searchSection">
-        <div class="section-title">
-            <h2>🎫 Admit Card Download</h2>
-            <p>আবেদনের সময় ব্যবহৃত মোবাইল নম্বরটি দিয়ে আপনার অ্যাডমিট কার্ডটি খুঁজে নিন।</p>
-            <div class="underline"></div>
-        </div>
-
-        <div class="search-container">
-            <div class="search-box pro-search">
-                <input type="tel" id="searchMobile" placeholder="আপনার মোবাইল নম্বর লিখুন (01XXXXXXXXX)">
-                <button onclick="findAdmitCard()"><i class="fas fa-search"></i> সার্চ করুন</button>
-            </div>
-            <p class="search-hint">নোট: শুধুমাত্র ভেরিফাইড আবেদনকারীরাই অ্যাডমিট কার্ড ডাউনলোড করতে পারবেন।</p>
-        </div>
-    </section>
-
-    <!-- Admit Card Display Area -->
-    <div id="admitCardWrapper" style="display:none;">
-        <div class="container">
-            <div class="admit-card-box" id="printableAdmit">
-                <div class="admit-header">
-                    <img src="logo.jpg.jpeg" alt="Logo" class="admit-logo">
-                    <div class="admit-title">
-                        <h2>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h2>
-                        <p>ফতেপুর, গোয়াইনঘাট, সিলেট</p>
-                        <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং</h3>
-                        <span class="badge">প্রবেশপত্র (Admit Card)</span>
-                    </div>
-                </div>
-
-                <div class="admit-body">
-                    <div class="admit-info">
-                        <div class="info-row"><span>রোল নম্বর:</span> <strong id="resRoll"></strong></div>
-                        <div class="info-row"><span>পরীক্ষার্থীর নাম:</span> <strong id="resName"></strong></div>
-                        <div class="info-row"><span>পিতার নাম:</span> <strong id="resFather"></strong></div>
-                        <div class="info-row"><span>শ্রেণি:</span> <strong id="resClass"></strong></div>
-                        <div class="info-row"><span>শিক্ষা প্রতিষ্ঠান:</span> <strong id="resSchool"></strong></div>
-                        <div class="info-row"><span>পরীক্ষার তারিখ:</span> <strong>২৫শে ডিসেম্বর, ২০২৬ ইং</strong></div>
-                        <div class="info-row"><span>পরীক্ষার সময়:</span> <strong>সকাল ১০:০০ টা - ১২:০০ টা</strong></div>
-                    </div>
-                    <div class="admit-photo">
-                        <div class="photo-box">Photo</div>
-                    </div>
-                </div>
-
-                <div class="admit-instructions">
-                    <h4>পরীক্ষার্থীদের জন্য নির্দেশনাবলী:</h4>
-                    <ul>
-                        <li>পরীক্ষা শুরুর ৩০ মিনিট আগে কেন্দ্রে উপস্থিত হতে হবে।</li>
-                        <li>অ্যাডমিট কার্ড অবশ্যই সাথে আনতে হবে।</li>
-                        <li>বলপয়েন্ট কলম, পেন্সিল এবং জ্যামিতি বক্স ছাড়া অন্য কিছু আনা নিষেধ।</li>
-                        <li>মোবাইল ফোন বা ইলেকট্রনিক ডিভাইস সম্পূর্ণ নিষিদ্ধ।</li>
-                    </ul>
-                </div>
-
-                <div class="admit-footer">
-                    <div class="signature">
-                        <p>____________________</p>
-                        <span>পরীক্ষার্থীর স্বাক্ষর</span>
-                    </div>
-                    <div class="signature">
-                        <p>____________________</p>
-                        <span>পরীক্ষা নিয়ন্ত্রক</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="admit-actions no-print">
-                <button onclick="window.print()" class="btn btn-print"><i class="fas fa-print"></i> প্রিন্ট / সেভ করুন (PDF)</button>
-                <button onclick="location.reload()" class="btn btn-back">আবার সার্চ করুন</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="no-print">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা | সর্বস্বত্ব সংরক্ষিত।</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // ডেমো ডাটা (পরবর্তীতে আপনি এখানে আপনার স্টুডেন্টদের ডাটা যোগ করবেন)
-        const studentData = [
-            { mobile: "01718377229", roll: "26001", name: "মোঃ আব্দুল্লাহ", father: "মোঃ করিম উল্লাহ", class: "৫ম", school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়" },
-            { mobile: "01700000000", roll: "26005", name: "ফাতেমা আক্তার", father: "আব্দুল মজিদ", class: "৪র্থ", school: "মডেল একাডেমি" }
-        ];
-
-        function findAdmitCard() {
-            const mobile = document.getElementById("searchMobile").value.trim();
-            const student = studentData.find(s => s.mobile === mobile);
-
-            if (student) {
-                document.getElementById("resRoll").innerText = student.roll;
-                document.getElementById("resName").innerText = student.name;
-                document.getElementById("resFather").innerText = student.father;
-                document.getElementById("resClass").innerText = student.class;
-                document.getElementById("resSchool").innerText = student.school;
-
-                document.getElementById("searchSection").style.display = "none";
-                document.getElementById("admitCardWrapper").style.display = "block";
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'পাওয়া যায়নি!',
-                    text: 'এই মোবাইল নম্বর দিয়ে কোনো ভেরিফাইড আবেদন পাওয়া যায়নি। দয়া করে সঠিক নম্বর দিন।',
-                    confirmButtonColor: '#0056b3'
-                });
-            }
-        }
-    </script>
-
-    <style>
-        .page-section { padding: 60px 0; text-align: center; }
+<style>
+        .page-section { padding: 40px 0; text-align: center; }
         .search-container { max-width: 600px; margin: 0 auto; padding: 20px; }
         .pro-search { display: flex; gap: 10px; background: #fff; padding: 10px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
-        .pro-search input { flex: 1; border: none; padding: 10px 20px; font-size: 16px; outline: none; border-radius: 50px; }
-        .pro-search button { background: var(--primary); color: #fff; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .pro-search button:hover { background: var(--secondary); }
+        .pro-search input { flex: 1; border: none; padding: 10px 20px; font-size: 16px; outline: none; border-radius: 50px; font-family: 'Hind Siliguri', sans-serif; }
+        .pro-search button { background: #004080; color: #fff; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; font-family: 'Hind Siliguri', sans-serif; }
+        .pro-search button:hover { background: #002b5c; }
         .search-hint { margin-top: 15px; color: #777; font-size: 14px; }
 
-        /* Admit Card Styling */
+        /* Admit Card Styling (Offline Matching Single Page) */
         .admit-card-box { 
-            background: #fff; border: 2px solid #333; padding: 40px; margin: 40px auto; max-width: 800px; position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: #fff; border: 2.5px solid #004080; padding: 25px; margin: 30px auto; max-width: 800px; position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08); font-family: 'Hind Siliguri', sans-serif; text-align: left;
         }
-        .admit-header { display: flex; align-items: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
-        .admit-logo { width: 80px; height: 80px; margin-right: 20px; }
+        .admit-header { display: flex; align-items: center; border-bottom: 2px solid #004080; padding-bottom: 12px; margin-bottom: 15px; }
+        .admit-logo { width: 75px; height: 75px; object-fit: contain; margin-right: 15px; }
         .admit-title { flex: 1; text-align: center; }
-        .admit-title h2 { font-size: 24px; color: #000; margin: 0; }
-        .admit-title p { font-size: 14px; margin: 5px 0; }
-        .admit-title h3 { font-size: 18px; margin: 10px 0; background: #eee; display: inline-block; padding: 5px 15px; border-radius: 5px; }
-        .badge { display: block; font-weight: bold; text-decoration: underline; margin-top: 5px; }
+        .admit-title h2 { font-size: 24px; color: #003366; margin: 0; font-weight: 700; }
+        .admit-title p { font-size: 13px; margin: 2px 0; color: #333; }
+        .admit-title h3 { font-size: 17px; margin: 4px 0; color: #003366; font-weight: 600; }
+        .badge { display: inline-block; background: #003366; color: #fff; font-weight: bold; padding: 2px 25px; border-radius: 4px; font-size: 13px; margin-top: 4px; }
 
-        .admit-body { display: flex; gap: 30px; margin-bottom: 30px; }
-        .admit-info { flex: 1; }
-        .info-row { display: flex; border-bottom: 1px solid #eee; padding: 8px 0; font-size: 16px; }
-        .info-row span { width: 140px; color: #555; }
+        .admit-body { display: flex; gap: 20px; margin-bottom: 15px; align-items: flex-start; }
+        .admit-info { flex: 1; font-size: 15px; line-height: 2.1; }
+        .info-row { display: flex; border-bottom: 1px dotted #aaa; padding: 4px 0; }
+        .info-row span { width: 130px; color: #333; font-weight: 600; }
         .info-row strong { color: #000; }
 
-        .photo-box { width: 120px; height: 140px; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 14px; }
+        .photo-box { width: 100px; height: 115px; border: 1px solid #777; display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px; background: #f8fafc; text-align: center; }
 
-        .admit-instructions { border-top: 1px solid #333; padding-top: 15px; }
-        .admit-instructions h4 { margin-bottom: 10px; font-size: 16px; text-decoration: underline; }
-        .admit-instructions ul { padding-left: 20px; font-size: 14px; }
-        .admit-instructions li { margin-bottom: 5px; }
+        /* Exam Table & Center */
+        .exam-details-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 14px; }
+        .exam-details-table th, .exam-details-table td { border: 1.5px solid #003366; padding: 6px 10px; text-align: left; }
+        .exam-details-table th { background-color: #003366; color: white; text-align: center; font-size: 14px; }
+        .center-td { background: #fdfdfd; font-weight: 500; }
 
-        .admit-footer { display: flex; justify-content: space-between; margin-top: 50px; text-align: center; }
-        .signature span { font-size: 14px; font-weight: bold; }
+        /* Rules / Backside embedded inside single page */
+        .admit-instructions { border-top: 2px dashed #003366; padding-top: 12px; margin-top: 15px; }
+        .admit-instructions h4 { margin-bottom: 8px; font-size: 14px; text-align: center; background: #003366; color: #fff; padding: 3px; border-radius: 3px; }
+        .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 15px; font-size: 11.5px; line-height: 1.4; padding-left: 10px; }
+        .rules-grid li { margin-bottom: 3px; }
+
+        .admit-footer { display: flex; justify-content: space-between; margin-top: 35px; text-align: center; font-size: 13px; }
+        .signature p { margin-bottom: 2px; font-family: monospace; }
+        .signature span { font-weight: bold; color: #333; border-top: 1px solid #333; display: inline-block; padding-top: 3px; width: 150px; }
 
         .admit-actions { text-align: center; margin-bottom: 60px; }
-        .btn-print { background: #28a745; color: #fff; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; margin-right: 10px; }
-        .btn-back { background: #666; color: #fff; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .btn-print { background: #28a745; color: #fff; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: bold; margin-right: 10px; font-family: 'Hind Siliguri', sans-serif; }
+        .btn-back { background: #666; color: #fff; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-size: 15px; font-family: 'Hind Siliguri', sans-serif; }
 
         /* Print Logic */
         @media print {
             .no-print { display: none !important; }
             body { background: #fff; }
-            .admit-card-box { border: 2px solid #000; box-shadow: none; margin: 0; width: 100%; }
+            .admit-card-box { border: 2px solid #000; box-shadow: none; margin: 0; width: 100%; max-width: 100%; padding: 15px; }
         }
     </style>
-</body>
-</html>
