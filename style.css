@@ -466,3 +466,24 @@ footer {
 .gallery-grid .gallery-item.hide {
     display: none;
 }
+.btn-rules {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #f39c12; 
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-rules:hover {
+    background-color: #d68910;
+    color: white;
+}
