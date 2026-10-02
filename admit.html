@@ -9,32 +9,33 @@
     <style>
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
-            background-color: #f4f6f9;
+            background-color: #eef2f7;
             margin: 0;
-            padding: 20px;
-            color: #000;
+            padding: 15px;
+            color: #2c3e50;
         }
 
         .search-container {
-            max-width: 700px;
+            max-width: 600px;
             margin: 30px auto;
-            background: #fff;
-            padding: 30px;
+            background: #ffffff;
+            padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: center;
+            border-top: 5px solid #004080;
         }
 
         .search-container h2 {
-            color: #003366;
-            margin-bottom: 10px;
-            font-size: 24px;
+            color: #004080;
+            margin-bottom: 8px;
+            font-size: 22px;
         }
 
         .search-container p {
             color: #555;
             margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .search-box {
@@ -44,161 +45,219 @@
         }
 
         .search-box input {
-            padding: 12px 18px;
+            padding: 12px 15px;
             width: 65%;
-            border: 2px solid #ddd;
+            border: 2px solid #cbd5e1;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             transition: 0.3s;
         }
 
         .search-box input:focus {
-            border-color: #003366;
+            border-color: #004080;
+            box-shadow: 0 0 6px rgba(0, 64, 128, 0.2);
         }
 
         .search-box button {
-            padding: 12px 25px;
-            background-color: #003366;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #004080, #00264d);
             color: white;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             font-weight: bold;
             transition: 0.3s;
         }
 
         .search-box button:hover {
-            background-color: #002244;
+            background: linear-gradient(135deg, #003366, #001a33);
         }
 
-        /* Admit Card Layout */
+        /* হরাইজন্টাল ও মোবাইল ফ্রেন্ডলি কম্প্যাক্ট এডমিট কার্ড */
         .admit-card {
-            width: 210mm;
-            min-height: 130mm;
-            margin: 30px auto;
-            background: #fff;
-            border: 2px solid #2e7d32;
-            padding: 15px 25px;
+            width: 100%;
+            max-width: 750px;
+            margin: 25px auto;
+            background: #ffffff;
+            border: 3px double #004080;
+            padding: 18px 22px;
             box-sizing: border-box;
             position: relative;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            display: none; /* সার্চ করার পর শো করবে */
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            display: none;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* ব্যাকগ্রাউন্ড ওয়াটারমার্ক লোগো */
+        .admit-card::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            background: url('Logo.jpg.jpeg') no-repeat center center;
+            background-size: contain;
+            opacity: 0.04;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
         }
 
         .header-section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #2e7d32;
+            border-bottom: 2.5px solid #004080;
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
 
         .logo-area {
-            width: 70px;
-            height: 70px;
-            border: 2px solid #2e7d32;
-            border-radius: 50%;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            font-size: 11px;
-            font-weight: bold;
-            color: #2e7d32;
-            background: #f9fff9;
+        }
+
+        .logo-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid #004080;
+            padding: 2px;
+            background: #fff;
         }
 
         .title-area {
             text-align: center;
             flex-grow: 1;
+            padding: 0 10px;
         }
 
         .title-area h1 {
-            color: #b30000;
+            color: #d32f2f;
             margin: 0;
-            font-size: 26px;
+            font-size: 20px;
             font-weight: bold;
         }
 
         .title-area p {
             margin: 2px 0;
-            font-size: 14px;
-            color: #333;
+            font-size: 11px;
+            color: #555;
         }
 
         .title-area h3 {
-            color: #003366;
-            margin: 5px 0 0 0;
-            font-size: 18px;
+            color: #004080;
+            margin: 4px 0 0 0;
+            font-size: 15px;
+            font-weight: bold;
         }
 
         .badge-title {
-            background: #003366;
+            background: linear-gradient(135deg, #004080, #00264d);
             color: white;
-            padding: 3px 20px;
+            padding: 3px 18px;
             display: inline-block;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-top: 5px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 4px;
         }
 
         .photo-roll-area {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
+            gap: 5px;
         }
 
         .photo-box {
-            width: 90px;
-            height: 110px;
-            border: 1px dashed #666;
+            width: 75px;
+            height: 90px;
+            border: 2px dashed #004080;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: #777;
-            background: #fafafa;
+            font-size: 9px;
+            color: #666;
+            background: #f8fafc;
             text-align: center;
+            padding: 4px;
         }
 
         .roll-box {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
+            color: #004080;
         }
 
         .roll-box span {
-            border: 1px solid #ccc;
-            padding: 4px 12px;
-            background: #eee;
-            margin-left: 5px;
+            border: 1px solid #004080;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 3px;
+            color: #000;
+            margin-left: 4px;
             display: inline-block;
-            min-width: 80px;
+            text-align: center;
         }
 
-        /* Student Info Fields */
-        .info-row {
+        .info-grid {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
             margin-bottom: 12px;
-            font-size: 15px;
+        }
+
+        .info-row {
+            margin-bottom: 8px;
+            font-size: 13.5px;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            border-bottom: 1px dotted #ccc;
-            padding-bottom: 6px;
+            gap: 10px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
         }
 
         .info-item {
             flex-grow: 1;
         }
 
+        .info-item strong {
+            color: #1e293b;
+        }
+
+        .info-item span {
+            color: #334155;
+            border-bottom: 1px dotted #94a3b8;
+            padding-bottom: 1px;
+            display: inline-block;
+        }
+
         .exam-center-box {
-            border: 2px solid #2e7d32;
-            margin: 15px 0;
+            border: 1.5px solid #2e7d32;
+            background: #f2fcf2;
+            border-radius: 5px;
+            margin: 10px 0;
             padding: 8px 12px;
-            font-size: 15px;
+            font-size: 13.5px;
+            color: #1b5e20;
         }
 
         .schedule-title {
@@ -207,15 +266,16 @@
             text-align: center;
             padding: 5px;
             font-weight: bold;
-            font-size: 15px;
-            margin: 10px 0 5px 0;
+            font-size: 13.5px;
+            border-radius: 4px 4px 0 0;
+            margin: 10px 0 0 0;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 5px;
-            font-size: 14px;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .schedule-table th, .schedule-table td {
@@ -225,22 +285,24 @@
         }
 
         .schedule-table th {
-            background: #f1f8f1;
+            background: #e8f5e9;
+            color: #1b5e20;
         }
 
         .footer-signatures {
             display: flex;
             justify-content: space-between;
-            margin-top: 35px;
-            font-size: 14px;
+            margin-top: 30px;
+            font-size: 13px;
             font-weight: bold;
         }
 
         .sig-line {
-            border-top: 1px solid #000;
-            width: 180px;
+            border-top: 2px solid #333;
+            width: 160px;
             text-align: center;
             padding-top: 4px;
+            color: #333;
         }
 
         .print-btn-container {
@@ -249,25 +311,64 @@
         }
 
         .print-btn {
-            background-color: #2e7d32;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
             color: white;
             border: none;
             padding: 10px 25px;
-            font-size: 16px;
-            border-radius: 5px;
+            font-size: 15px;
+            border-radius: 6px;
             cursor: pointer;
             font-family: 'SolaimanLipi', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
+            transition: 0.3s;
         }
 
         .print-btn:hover {
-            background-color: #215e24;
+            background: linear-gradient(135deg, #1b5e20, #0e3b12);
         }
 
         .error-msg {
-            color: red;
-            margin-top: 15px;
+            color: #d32f2f;
+            margin-top: 12px;
             font-weight: bold;
             display: none;
+            background: #ffebee;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* ছোট স্ক্রিন বা মোবাইলের জন্য রেসপন্সিভ এডজাস্টমেন্ট */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+            .admit-card {
+                padding: 12px;
+            }
+            .header-section {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .photo-roll-area {
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .info-row {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .footer-signatures {
+                margin-top: 25px;
+            }
+            .sig-line {
+                width: 120px;
+                font-size: 11px;
+            }
         }
 
         @media print {
@@ -275,14 +376,14 @@
                 background: none;
                 padding: 0;
             }
-            .search-container, .print-btn-container, .nav-bar, header, footer {
+            .search-container, .print-btn-container {
                 display: none !important;
             }
             .admit-card {
                 box-shadow: none;
-                border: 2px solid #2e7d32 !important;
-                margin: 0;
-                width: 100%;
+                border: 3px double #004080 !important;
+                margin: 0 auto;
+                max-width: 100%;
                 page-break-after: avoid;
             }
         }
@@ -293,80 +394,84 @@
     <!-- সার্চ বক্স সেকশন -->
     <div class="search-container" id="searchSection">
         <h2>প্রবেশপত্র ডাউনলোড (Admit Card)</h2>
-        <p>রেজিস্ট্রেশনের সময় প্রদানকৃত আপনার **মোবাইল নম্বরটি** নিচে লিখে সাবমিট করুন:</p>
+        <p>রেজিস্ট্রেশনের সময় প্রদানকৃত আপনার <b>মোবাইল নম্বরটি</b> নিচে লিখে সার্চ করুন:</p>
         <div class="search-box">
             <input type="text" id="phoneInput" placeholder="মোবাইল নম্বর দিন (যেমন: 017xxxxxxxx)">
-            <button onclick="searchAdmitCard()">Search</button>
+            <button onclick="searchAdmitCard()"><i class="fas fa-search"></i> Search</button>
         </div>
         <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো রেজিস্ট্রেশন পাওয়া যায়নি।</div>
     </div>
 
-    <!-- মূল এডমিট কার্ড টেমপ্লেট -->
+    <!-- লোগোসহ মূল কম্প্যাক্ট ও হরাইজন্টাল এডমিট কার্ড টেমপ্লেট -->
     <div class="admit-card" id="admitCard">
-        <div class="header-section">
-            <div class="logo-area">
-                অভিযাত্রিক<br>সমাজকল্যাণ<br>সংস্থা
+        <div class="card-content">
+            <div class="header-section">
+                <div class="logo-area">
+                    <img src="Logo.jpg.jpeg" alt="Logo">
+                </div>
+                <div class="title-area">
+                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                    <p>ফতেপুর, গোয়াইনঘাট, সিলেট।</p>
+                    <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h3>
+                    <div class="badge-title">প্রবেশপত্র (Admit Card)</div>
+                </div>
+                <div class="photo-roll-area">
+                    <div class="photo-box" id="studentPhoto">স্ট্যাম্প সাইজ ছবি</div>
+                    <div class="roll-box">রোল: <span id="resRoll">---------</span></div>
+                </div>
             </div>
-            <div class="title-area">
-                <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
-                <p>ফতেপুর, গোয়াইনঘাট, সিলেট।</p>
-                <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h3>
-                <div class="badge-title">প্রবেশপত্র</div>
+
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><strong>পরীক্ষার্থীর নাম
+:</strong> <span id="resName" style="width: 72%;">-----------------------------</span></div>
+                    <div class="info-item" style="flex: 0 0 210px;"><strong>মোবাইল:</strong> <span id="resPhone" style="width: 130px;">----------------</span></div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-item"><strong>পিতার নাম:</strong> <span id="resFather" style="width: 75%;">----------------------------------</span></div>
+                    <div class="info-item"><strong>মাতার নাম:</strong> <span id="resMother" style="width: 75%;">----------------------------------</span></div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span id="resSchool" style="width: 70%;">----------------------------------</span></div>
+                    <div class="info-item" style="flex: 0 0 150px;"><strong>শ্রেণি:</strong> <span id="resClass" style="width: 80px;">---------</span></div>
+                    <div class="info-item" style="flex: 0 0 140px;"><strong>ক্লাস রোল:</strong> <span id="resClassRoll" style="width: 60px;">---------</span></div>
+                </div>
             </div>
-            <div class="photo-roll-area">
-                <div class="photo-box" id="studentPhoto">স্ট্যাম্প সাইজ ছবি</div>
-                <div class="roll-box">বৃত্তি রোল: <span id="resRoll">---------</span></div>
+
+            <div class="exam-center-box">
+                <i class="fas fa-school"></i> <strong>পরীক্ষা কেন্দ্র:</strong> <span id="resCenter">হাজী মদরিছ আলী উচ্চ বিদ্যালয়,ফতেপুর।</span>
             </div>
-        </div>
 
-        <div class="info-row">
-            <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span id="resName">-----------------------------</span></div>
-            <div class="info-item" style="flex: 0 0 250px;"><strong>মোবাইল:</strong> <span id="resPhone">----------------</span></div>
-        </div>
+            <div class="schedule-title"><i class="fas fa-calendar-alt"></i> পরীক্ষার সময়সূচি</div>
+            <table class="schedule-table">
+                <tr>
+                    <th style="width: 32%;">তারিখ ও বার</th>
+                    <th style="width: 68%;">সময় ও বিষয়সমূহ</th>
+                </tr>
+                <tr>
+                    <td id="resDate">৬ নভেম্বর ২০২৬, শুক্রবারী</td>
+                    <td>
+                        সকাল ১০:৩০ মিনিট থেকে দুপুর ১২:১০ মিনিট পর্যন্ত<br>
+                        <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান ও সাধারণ জ্ঞান
+                    </td>
+                </tr>
+            </table>
 
-        <div class="info-row">
-            <div class="info-item"><strong>পিতার নাম:</strong> <span id="resFather">--------------------------------------------------</span></div>
-            <div class="info-item"><strong>মাতার নাম:</strong> <span id="resMother">--------------------------------------------------</span></div>
-        </div>
-
-        <div class="info-row">
-            <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span id="resSchool">--------------------------------------------------</span></div>
-            <div class="info-item" style="flex: 0 0 150px;"><strong>শ্রেণি:</strong> <span id="resClass">---------</span></div>
-            <div class="info-item" style="flex: 0 0 150px;"><strong>রোল:</strong> <span id="resClassRoll">---------</span></div>
-        </div>
-
-        <div class="exam-center-box">
-            <strong>পরীক্ষা কেন্দ্র:</strong> <span id="resCenter">ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।</span>
-        </div>
-
-        <div class="schedule-title">পরীক্ষার সময়সূচি</div>
-        <table class="schedule-table">
-            <tr>
-                <th style="width: 40%;">তারিখ ও বার</th>
-                <th style="width: 60%;">সময় ও বিষয়সমূহ</th>
-            </tr>
-            <tr>
-                <td id="resDate">নির্ধারিত তারিখ অনুযায়ী</td>
-                <td>
-                    সকাল ১০:৩০ টা থেকে দুপুর ১২:১০ টা পর্যন্ত<br>
-                    <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
-                </td>
-            </tr>
-        </table>
-
-        <div class="footer-signatures">
-            <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
-            <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
+            <div class="footer-signatures">
+                <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
+                <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
+            </div>
         </div>
     </div>
 
     <!-- প্রিন্ট বাটন -->
     <div class="print-btn-container" id="printContainer" style="display: none;">
-        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট বা ডাউনলোড করুন</Nutton>
+        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট বা ডাউনলোড করুন</button>
     </div>
 
     <script>
-        // ডেমো বা আসল শিক্ষার্থীদের ডাটাবেজ (রেজিস্ট্রেশন শেষ হলে এখানে সকল শিক্ষার্থীর ডাটা যুক্ত করতে পারবেন)
         const studentsData = [
             {
                 phone: "01718377229",
@@ -398,13 +503,11 @@
             const admitCard = document.getElementById("admitCard");
             const printContainer = document.getElementById("printContainer");
 
-            // ডাটাবেজে সার্চ করা
             const foundStudent = studentsData.find(s => s.phone === phoneVal);
 
             if (foundStudent) {
                 errorMsg.style.display = "none";
                 
-                // তথ্য বসানো
                 document.getElementById("resRoll").innerText = foundStudent.roll;
                 document.getElementById("resName").innerText = foundStudent.name;
                 document.getElementById("resPhone").innerText = foundStudent.phone;
@@ -415,7 +518,6 @@
                 document.getElementById("resClassRoll").innerText = foundStudent.classRoll;
                 document.getElementById("resCenter").innerText = foundStudent.center;
 
-                // কার্ড ও প্রিন্ট বাটন প্রদর্শন
                 admitCard.style.display = "block";
                 printContainer.style.display = "block";
             } else {
