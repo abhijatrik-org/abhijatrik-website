@@ -3,203 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অ্যাডমিট কার্ড ডাউনলোড | অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>প্রবেশপত্র - ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ | অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
+    <link href="https://fonts.googleapis.com/css2?family=SolaimanLipi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+
+        .search-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .search-container h2 {
+            color: #003366;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .search-container p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .search-box input {
+            padding: 12px 18px;
+            width: 65%;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #003366;
+        }
+
+        .search-box button {
+            padding: 12px 25px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: #002244;
+        }
+
+        /* Admit Card Layout */
+        .admit-card {
+            width: 210mm;
+            min-height: 130mm;
+            margin: 30px auto;
+            background: #fff;
+            border: 2px solid #2e7d32;
+            padding: 15px 25px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none; /* সার্চ করার পর শো করবে */
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .logo-area {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #2e7d32;
+            background: #f9fff9;
+        }
+
+        .title-area {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .title-area h1 {
+            color: #b30000;
+            margin: 0;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .title-area p {
+            margin: 2px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .title-area h3 {
+            color: #003366;
+            margin: 5px 0 0 0;
+            font-size: 18px;
+        }
+
+        .badge-title {
+            background: #003366;
+            color: white;
+            padding: 3px 20px;
+            display: inline-block;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .photo-roll-area {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .photo-box {
+            width: 90px;
+            height: 110px;
+            border: 1px dashed #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #777;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .roll-box {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .roll-box span {
+            border: 1px solid #ccc;
+            padding: 4px 12px;
+            background: #eee;
+            margin-left: 5px;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        /* Student Info Fields */
+        .info-row {
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 6px;
+        }
+
+        .info-item {
+            flex-grow: 1;
+        }
+
+        .exam-center-box {
+            border: 2px solid #2e7d32;
+            margin: 15px 0;
+            padding: 8px 12px;
+            font-size: 15px;
+        }
+
+        .schedule-title {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 10px 0 5px 0;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #2e7d32;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background: #f1f8f1;
+        }
+
+        .footer-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .sig-line {
+            border-top: 1px solid #000;
+            width: 180px;
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .print-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-btn {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'SolaimanLipi', sans-serif;
+        }
+
+        .print-btn:hover {
+            background-color: #215e24;
+        }
+
+        .error-msg {
+            color: red;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .search-container, .print-btn-container, .nav-bar, header, footer {
+                display: none !important;
+            }
+            .admit-card {
+                box-shadow: none;
+                border: 2px solid #2e7d32 !important;
+                margin: 0;
+                width: 100%;
+                page-break-after: avoid;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header class="no-print">
-        <div class="container header-content">
+    <!-- সার্চ বক্স সেকশন -->
+    <div class="search-container" id="searchSection">
+        <h2>প্রবেশপত্র ডাউনলোড (Admit Card)</h2>
+        <p>রেজিস্ট্রেশনের সময় প্রদানকৃত আপনার **মোবাইল নম্বরটি** নিচে লিখে সাবমিট করুন:</p>
+        <div class="search-box">
+            <input type="text" id="phoneInput" placeholder="মোবাইল নম্বর দিন (যেমন: 017xxxxxxxx)">
+            <button onclick="searchAdmitCard()">Search</button>
+        </div>
+        <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো রেজিস্ট্রেশন পাওয়া যায়নি।</div>
+    </div>
+
+    <!-- মূল এডমিট কার্ড টেমপ্লেট -->
+    <div class="admit-card" id="admitCard">
+        <div class="header-section">
             <div class="logo-area">
-                <img src="logo.jpg.jpeg" alt="Ovijatrik Logo" class="main-logo">
-                <div class="brand-text">
-                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
-                    <p>একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সামাজিক সংগঠন</p>
-                </div>
+                অভিযাত্রিক<br>সমাজকল্যাণ<br>সংস্থা
+            </div>
+            <div class="title-area">
+                <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                <p>ফতেপুর, গোয়াইনঘাট, সিলেট।</p>
+                <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h3>
+                <div class="badge-title">প্রবেশপত্র</div>
+            </div>
+            <div class="photo-roll-area">
+                <div class="photo-box" id="studentPhoto">স্ট্যাম্প সাইজ ছবি</div>
+                <div class="roll-box">বৃত্তি রোল: <span id="resRoll">---------</span></div>
             </div>
         </div>
-    </header>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="no-print">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="apply.html">Apply Online</a></li>
-                <li><a href="syllabus.html">Syllabus</a></li>
-                <li><a href="admit.html" class="active">Admit Card</a></li>
-                <li><a href="result.html">Result</a></li>
-                <li><a href="scholarship.html">Scholarship Holders</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Page Content -->
-    <section class="container page-section no-print" id="searchSection">
-        <div class="section-title">
-            <h2>🎫 Admit Card Download</h2>
-            <p>আবেদনের সময় ব্যবহৃত মোবাইল নম্বরটি দিয়ে আপনার অ্যাডমিট কার্ডটি খুঁজে নিন।</p>
-            <div class="underline"></div>
+        <div class="info-row">
+            <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span id="resName">-----------------------------</span></div>
+            <div class="info-item" style="flex: 0 0 250px;"><strong>মোবাইল:</strong> <span id="resPhone">----------------</span></div>
         </div>
 
-        <div class="search-container">
-            <div class="search-box pro-search">
-                <input type="tel" id="searchMobile" placeholder="আপনার মোবাইল নম্বর লিখুন (01XXXXXXXXX)">
-                <button onclick="findAdmitCard()"><i class="fas fa-search"></i> সার্চ করুন</button>
-            </div>
-            <p class="search-hint">নোট: শুধুমাত্র ভেরিফাইড আবেদনকারীরাই অ্যাডমিট কার্ড ডাউনলোড করতে পারবেন।</p>
+        <div class="info-row">
+            <div class="info-item"><strong>পিতার নাম:</strong> <span id="resFather">--------------------------------------------------</span></div>
+            <div class="info-item"><strong>মাতার নাম:</strong> <span id="resMother">--------------------------------------------------</span></div>
         </div>
-    </section>
 
-    <!-- Admit Card Display Area -->
-    <div id="admitCardWrapper" style="display:none;">
-        <div class="container">
-            <div class="admit-card-box" id="printableAdmit">
-                <div class="admit-header">
-                    <img src="logo.jpg.jpeg" alt="Logo" class="admit-logo">
-                    <div class="admit-title">
-                        <h2>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h2>
-                        <p>ফতেপুর, গোয়াইনঘাট, সিলেট</p>
-                        <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ ইং</h3>
-                        <span class="badge">প্রবেশপত্র (Admit Card)</span>
-                    </div>
-                </div>
+        <div class="info-row">
+            <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span id="resSchool">--------------------------------------------------</span></div>
+            <div class="info-item" style="flex: 0 0 150px;"><strong>শ্রেণি:</strong> <span id="resClass">---------</span></div>
+            <div class="info-item" style="flex: 0 0 150px;"><strong>রোল:</strong> <span id="resClassRoll">---------</span></div>
+        </div>
 
-                <div class="admit-body">
-                    <div class="admit-info">
-                        <div class="info-row"><span>রোল নম্বর:</span> <strong id="resRoll"></strong></div>
-                        <div class="info-row"><span>পরীক্ষার্থীর নাম:</span> <strong id="resName"></strong></div>
-                        <div class="info-row"><span>পিতার নাম:</span> <strong id="resFather"></strong></div>
-                        <div class="info-row"><span>শ্রেণি:</span> <strong id="resClass"></strong></div>
-                        <div class="info-row"><span>শিক্ষা প্রতিষ্ঠান:</span> <strong id="resSchool"></strong></div>
-                        <div class="info-row"><span>পরীক্ষার তারিখ:</span> <strong>২৫শে ডিসেম্বর, ২০২৬ ইং</strong></div>
-                        <div class="info-row"><span>পরীক্ষার সময়:</span> <strong>সকাল ১০:০০ টা - ১২:০০ টা</strong></div>
-                    </div>
-                    <div class="admit-photo">
-                        <div class="photo-box">Photo</div>
-                    </div>
-                </div>
+        <div class="exam-center-box">
+            <strong>পরীক্ষা কেন্দ্র:</strong> <span id="resCenter">ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।</span>
+        </div>
 
-                <div class="admit-instructions">
-                    <h4>পরীক্ষার্থীদের জন্য নির্দেশনাবলী:</h4>
-                    <ul>
-                        <li>পরীক্ষা শুরুর ৩০ মিনিট আগে কেন্দ্রে উপস্থিত হতে হবে।</li>
-                        <li>অ্যাডমিট কার্ড অবশ্যই সাথে আনতে হবে।</li>
-                        <li>বলপয়েন্ট কলম, পেন্সিল এবং জ্যামিতি বক্স ছাড়া অন্য কিছু আনা নিষেধ।</li>
-                        <li>মোবাইল ফোন বা ইলেকট্রনিক ডিভাইস সম্পূর্ণ নিষিদ্ধ।</li>
-                    </ul>
-                </div>
+        <div class="schedule-title">পরীক্ষার সময়সূচি</div>
+        <table class="schedule-table">
+            <tr>
+                <th style="width: 40%;">তারিখ ও বার</th>
+                <th style="width: 60%;">সময় ও বিষয়সমূহ</th>
+            </tr>
+            <tr>
+                <td id="resDate">নির্ধারিত তারিখ অনুযায়ী</td>
+                <td>
+                    সকাল ১০:৩০ টা থেকে দুপুর ১২:১০ টা পর্যন্ত<br>
+                    <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
+                </td>
+            </tr>
+        </table>
 
-                <div class="admit-footer">
-                    <div class="signature">
-                        <p>____________________</p>
-                        <span>পরীক্ষার্থীর স্বাক্ষর</span>
-                    </div>
-                    <div class="signature">
-                        <p>____________________</p>
-                        <span>পরীক্ষা নিয়ন্ত্রক</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="admit-actions no-print">
-                <button onclick="window.print()" class="btn btn-print"><i class="fas fa-print"></i> প্রিন্ট / সেভ করুন (PDF)</button>
-                <button onclick="location.reload()" class="btn btn-back">আবার সার্চ করুন</button>
-            </div>
+        <div class="footer-signatures">
+            <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
+            <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="no-print">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; ২০২৬ অভিযাত্রিক সমাজকল্যাণ সংস্থা | সর্বস্বত্ব সংরক্ষিত।</p>
-            </div>
-        </div>
-    </footer>
+    <!-- প্রিন্ট বাটন -->
+    <div class="print-btn-container" id="printContainer" style="display: none;">
+        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট বা ডাউনলোড করুন</Nutton>
+    </div>
 
     <script>
-        // ডেমো ডাটা (পরবর্তীতে আপনি এখানে আপনার স্টুডেন্টদের ডাটা যোগ করবেন)
-        const studentData = [
-            { mobile: "01718377229", roll: "26001", name: "মোঃ আব্দুল্লাহ", father: "মোঃ করিম উল্লাহ", class: "৫ম", school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়" },
-            { mobile: "01700000000", roll: "26005", name: "ফাতেমা আক্তার", father: "আব্দুল মজিদ", class: "৪র্থ", school: "মডেল একাডেমি" }
+        // ডেমো বা আসল শিক্ষার্থীদের ডাটাবেজ (রেজিস্ট্রেশন শেষ হলে এখানে সকল শিক্ষার্থীর ডাটা যুক্ত করতে পারবেন)
+        const studentsData = [
+            {
+                phone: "01711111111",
+                roll: "1001",
+                name: "মো: আব্দুল্লাহ আল মামুন",
+                father: "মো: আব্দুর রহিম",
+                mother: "ফাতেমা বেগম",
+                school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়",
+                cls: "পঞ্চম",
+                classRoll: "০৫",
+                center: "ফতেপুর উচ্চ বিদ্যালয় কেন্দ্র"
+            },
+            {
+                phone: "01822222222",
+                roll: "1002",
+                name: "জান্নাতুল ফেরদৌস",
+                father: "রফিকুল ইসলাম",
+                mother: "সাজেদা বেগম",
+                school: "গোয়াইনঘাট আদর্শ উচ্চ বিদ্যালয়",
+                cls: "অষ্টম",
+                classRoll: "১২",
+                center: "ফতেপুর উচ্চ বিদ্যালয় কেন্দ্র"
+            }
         ];
 
-        function findAdmitCard() {
-            const mobile = document.getElementById("searchMobile").value.trim();
-            const student = studentData.find(s => s.mobile === mobile);
+        function searchAdmitCard() {
+            const phoneVal = document.getElementById("phoneInput").value.trim();
+            const errorMsg = document.getElementById("errorMsg");
+            const admitCard = document.getElementById("admitCard");
+            const printContainer = document.getElementById("printContainer");
 
-            if (student) {
-                document.getElementById("resRoll").innerText = student.roll;
-                document.getElementById("resName").innerText = student.name;
-                document.getElementById("resFather").innerText = student.father;
-                document.getElementById("resClass").innerText = student.class;
-                document.getElementById("resSchool").innerText = student.school;
+            // ডাটাবেজে সার্চ করা
+            const foundStudent = studentsData.find(s => s.phone === phoneVal);
 
-                document.getElementById("searchSection").style.display = "none";
-                document.getElementById("admitCardWrapper").style.display = "block";
+            if (foundStudent) {
+                errorMsg.style.display = "none";
+                
+                // তথ্য বসানো
+                document.getElementById("resRoll").innerText = foundStudent.roll;
+                document.getElementById("resName").innerText = foundStudent.name;
+                document.getElementById("resPhone").innerText = foundStudent.phone;
+                document.getElementById("resFather").innerText = foundStudent.father;
+                document.getElementById("resMother").innerText = foundStudent.mother;
+                document.getElementById("resSchool").innerText = foundStudent.school;
+                document.getElementById("resClass").innerText = foundStudent.cls;
+                document.getElementById("resClassRoll").innerText = foundStudent.classRoll;
+                document.getElementById("resCenter").innerText = foundStudent.center;
+
+                // কার্ড ও প্রিন্ট বাটন প্রদর্শন
+                admitCard.style.display = "block";
+                printContainer.style.display = "block";
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'পাওয়া যায়নি!',
-                    text: 'এই মোবাইল নম্বর দিয়ে কোনো ভেরিফাইড আবেদন পাওয়া যায়নি। দয়া করে সঠিক নম্বর দিন।',
-                    confirmButtonColor: '#0056b3'
-                });
+                admitCard.style.display = "none";
+                printContainer.style.display = "none";
+                errorMsg.style.display = "block";
             }
         }
     </script>
-
-    <style>
-        .page-section { padding: 60px 0; text-align: center; }
-        .search-container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .pro-search { display: flex; gap: 10px; background: #fff; padding: 10px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
-        .pro-search input { flex: 1; border: none; padding: 10px 20px; font-size: 16px; outline: none; border-radius: 50px; }
-        .pro-search button { background: var(--primary); color: #fff; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .pro-search button:hover { background: var(--secondary); }
-        .search-hint { margin-top: 15px; color: #777; font-size: 14px; }
-
-        /* Admit Card Styling */
-        .admit-card-box { 
-            background: #fff; border: 2px solid #333; padding: 40px; margin: 40px auto; max-width: 800px; position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        .admit-header { display: flex; align-items: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
-        .admit-logo { width: 80px; height: 80px; margin-right: 20px; }
-        .admit-title { flex: 1; text-align: center; }
-        .admit-title h2 { font-size: 24px; color: #000; margin: 0; }
-        .admit-title p { font-size: 14px; margin: 5px 0; }
-        .admit-title h3 { font-size: 18px; margin: 10px 0; background: #eee; display: inline-block; padding: 5px 15px; border-radius: 5px; }
-        .badge { display: block; font-weight: bold; text-decoration: underline; margin-top: 5px; }
-
-        .admit-body { display: flex; gap: 30px; margin-bottom: 30px; }
-        .admit-info { flex: 1; }
-        .info-row { display: flex; border-bottom: 1px solid #eee; padding: 8px 0; font-size: 16px; }
-        .info-row span { width: 140px; color: #555; }
-        .info-row strong { color: #000; }
-
-        .photo-box { width: 120px; height: 140px; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 14px; }
-
-        .admit-instructions { border-top: 1px solid #333; padding-top: 15px; }
-        .admit-instructions h4 { margin-bottom: 10px; font-size: 16px; text-decoration: underline; }
-        .admit-instructions ul { padding-left: 20px; font-size: 14px; }
-        .admit-instructions li { margin-bottom: 5px; }
-
-        .admit-footer { display: flex; justify-content: space-between; margin-top: 50px; text-align: center; }
-        .signature span { font-size: 14px; font-weight: bold; }
-
-        .admit-actions { text-align: center; margin-bottom: 60px; }
-        .btn-print { background: #28a745; color: #fff; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; margin-right: 10px; }
-        .btn-back { background: #666; color: #fff; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; }
-
-        /* Print Logic */
-        @media print {
-            .no-print { display: none !important; }
-            body { background: #fff; }
-            .admit-card-box { border: 2px solid #000; box-shadow: none; margin: 0; width: 100%; }
-        }
-    </style>
 </body>
 </html>
