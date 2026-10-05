@@ -348,13 +348,12 @@
             margin-bottom: 0px;
         }
 
-        /* সিগনেচারের পেছনের টেক্সচার ও ব্যাকগ্রাউন্ড রিমুভ করার জন্য ফিল্টার */
+        /* সিগনেচার স্টাইল (স্বচ্ছ পিএনজি ছবির জন্য) */
         .sig-img-container img {
             max-height: 42px;
             max-width: 130px;
             object-fit: contain;
             mix-blend-mode: multiply;
-            filter: contrast(250%) brightness(110%);
         }
 
         .sig-line {
@@ -447,7 +446,7 @@
 
             <div>
                 <div class="info-row">
-                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
+                    <div class="info-item"><strong>পরীক্ষার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
                     <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span id="resPhone" style="width: 150px;">----------------</span></div>
                 </div>
 
@@ -457,9 +456,8 @@
                 </div>
 
                 <div class="info-row">
-                    <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span id="resSchool" style="width: 73%;">----------------------------------</span></div>
-                    <div class="info-item" style="flex: 0 0 160px;"><strong>শ্রেণি:</strong> <span id="resClass" style="width: 90px;">---------</span></div>
-                    <div class="info-item" style="flex: 0 0 160px;"><strong>রোল:</strong> <span id="resClassRoll" style="width: 90px;">---------</span></div>
+                    <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span id="resSchool" style="width: 76%;">----------------------------------</span></div>
+                    <div class="info-item" style="flex: 0 0 240px;"><strong>শ্রেণি:</strong> <span id="resClass" style="width: 160px;">---------</span></div>
                 </div>
             </div>
 
@@ -475,7 +473,7 @@
                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                     </tr>
                     <tr>
-                        <td id="resDate">নির্ধারিত তারিখ অনুযায়ী</td>
+                        <td id="resDate">৬ নভেম্বর ২০২৬, শুক্রবার</td>
                         <td>
                             সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
                         </td>
@@ -550,23 +548,21 @@
             {
                 phone: "01711111111",
                 roll: "1001",
-                name: "মো: আব্দুল্লাহ আল মামুন",
+                name: "নিলুফা হক",
                 father: "মো: আব্দুর রহিম",
                 mother: "ফাতেমা বেগম",
                 school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়",
                 cls: "পঞ্চম",
-                classRoll: "০৫",
                 center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
             },
             {
-                phone: "01822222222",
+                phone: "01722138160",
                 roll: "1002",
                 name: "জান্নাতুল ফেরদৌস",
                 father: "রফিকুল ইসলাম",
                 mother: "সাজেদা বেগম",
-                school: "গোয়াইনঘাট আদর্শ উচ্চ বিদ্যালয়",
+                school: "চিকনাগুল আদর্শ উচ্চ বিদ্যালয়",
                 cls: "অষ্টম",
-                classRoll: "১২",
                 center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
             }
         ];
@@ -589,15 +585,14 @@
                 document.getElementById("resMother").innerText = foundStudent.mother;
                 document.getElementById("resSchool").innerText = foundStudent.school;
                 document.getElementById("resClass").innerText = foundStudent.cls;
-                document.getElementById("resClassRoll").innerText = foundStudent.classRoll;
                 document.getElementById("resCenter").innerText = foundStudent.center;
 
                 // শ্রেণি অনুযায়ী সঠিক পরীক্ষা নিয়ন্ত্রকের সিগনেচার ইমেজ সেট করা
                 const sigImg = document.getElementById("controllerSigImg");
                 if (foundStudent.cls === "চতুর্থ" || foundStudent.cls === "পঞ্চম" || foundStudent.cls === "৪র্থ" || foundStudent.cls === "৫ম") {
-                    sigImg.src = "4-5.sig.jpeg";
+                    sigImg.src = "4.5.png";
                 } else {
-                    sigImg.src = "6-10.sig.jpeg";
+                    sigImg.src = "6.10.png";
                 }
 
                 admitCard.style.display = "block";
