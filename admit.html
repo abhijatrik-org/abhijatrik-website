@@ -341,17 +341,20 @@
         }
 
         .sig-img-container {
-            height: 38px;
+            height: 40px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            margin-bottom: 2px;
+            margin-bottom: 0px;
         }
 
+        /* সিগনেচারের পেছনের সাদা ব্যাকগ্রাউন্ড রিমুভ ও স্বচ্ছ করার জন্য কোড */
         .sig-img-container img {
-            max-height: 38px;
+            max-height: 42px;
             max-width: 130px;
             object-fit: contain;
+            mix-blend-mode: multiply; /* এটি JPEG ছবির সাদা ব্যাকগ্রাউন্ড গায়েব করে দেবে */
+            filter: contrast(120%);   /* কালির রং গাঢ় ও স্পষ্ট করবে */
         }
 
         .sig-line {
@@ -472,139 +475,4 @@
                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                     </tr>
                     <tr>
-                        <td id="resDate">নির্ধারিত তারিখ অনুযায়ী</td>
-                        <td>
-                            সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- পরীক্ষা সংক্রান্ত নিয়মাবলি -->
-            <div class="rules-section">
-                <div class="rules-title">পরীক্ষা সংক্রান্ত জরুরি নিয়মাবলি</div>
-                <div class="rules-grid">
-                    <div>১. পরীক্ষার ৩০ মিনিট পূর্বে কেন্দ্রে উপস্থিত হতে হবে।</div>
-                    <div>৭. উত্তর সংশোধনে ঘষামাজা বা ফুইড ব্যবহার নিষেধ।</div>
-                    <div>২. প্রবেশপত্র সঙ্গে আনা বাধ্যতামূলক।</div>
-                    <div>৮. উত্তরপত্রে অতিরিক্ত কোনো দাগ বা লেখা যাবে না।</div>
-                    <div>৩. মোবাইল, স্মার্টওয়াচ বা কোনো অননুমোদিত সামগ্রী নিষিদ্ধ।</div>
-                    <div>৯. উত্তরপত্রেই উত্তর দেওয়া আবশ্যক।</div>
-                    <div>৪. মানবণ্টন অনুযায়ী পরীক্ষা ওএমআর পদ্ধতিতে হবে।</div>
-                    <div>১০. অসদুপায় অবলম্বন ও কথা বলা সম্পূর্ণ নিষিদ্ধ।</div>
-                    <div>৫. উত্তরপত্রের বৃত্ত কালো বলপেন দিয়ে ভরাট করতে হবে।</div>
-                    <div>১১. পরীক্ষা শেষে খাতা জমা দিয়ে হল ত্যাগ করতে হবে।</div>
-                    <div>৬. একটি প্রশ্নে একাধিক বৃত্ত পূরণ করা যাবে না।</div>
-                </div>
-            </div>
-
-            <!-- ফুটার: কিউআর কোড এবং সিগনেচার ছবিসহ -->
-            <div class="footer-section">
-                <div class="qr-verification">
-                    <div id="qrcode"></div>
-                    <div class="verified-text">
-                        <span style="color: #2e7d32; font-weight: bold;"><i class="fas fa-check-circle"></i> VERIFIED</span><br>
-                        অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
-                        <span style="font-size: 8px; color: #555;">স্ক্যান করে সত্যতা যাচাই করুন</span>
-                    </div>
-                </div>
-
-                <div class="footer-signatures">
-                    <div class="sig-box">
-                        <div class="sig-img-container">
-                            <img id="controllerSigImg" src="" alt="Signature">
-                        </div>
-                        <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
-                    </div>
-                    <div class="sig-box">
-                        <div class="sig-img-container"></div>
-                        <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- প্রিন্ট বাটন -->
-    <div class="print-btn-container" id="printContainer" style="display: none;">
-        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট বা ডাউনলোড করুন</button>
-    </div>
-
-    <script>
-        // কিউআর কোড জেনারেটর
-        window.onload = function() {
-            new QRCode(document.getElementById("qrcode"), {
-                text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
-                width: 55,
-                height: 55,
-                colorDark : "#003366",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        };
-
-        const studentsData = [
-            {
-                phone: "01711111111",
-                roll: "1001",
-                name: "মো: আব্দুল্লাহ আল মামুন",
-                father: "মো: আব্দুর রহিম",
-                mother: "ফাতেমা বেগম",
-                school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়",
-                cls: "পঞ্চম",
-                classRoll: "০৫",
-                center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
-            },
-            {
-                phone: "01822222222",
-                roll: "1002",
-                name: "জান্নাতুল ফেরদৌস",
-                father: "রফিকুল ইসলাম",
-                mother: "সাজেদা বেগম",
-                school: "গোয়াইনঘাট আদর্শ উচ্চ বিদ্যালয়",
-                cls: "অষ্টম",
-                classRoll: "১২",
-                center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
-            }
-        ];
-
-        function searchAdmitCard() {
-            const phoneVal = document.getElementById("phoneInput").value.trim();
-            const errorMsg = document.getElementById("errorMsg");
-            const admitCard = document.getElementById("admitCard");
-            const printContainer = document.getElementById("printContainer");
-
-            const foundStudent = studentsData.find(s => s.phone === phoneVal);
-
-            if (foundStudent) {
-                errorMsg.style.display = "none";
-                
-                document.getElementById("resRoll").innerText = foundStudent.roll;
-                document.getElementById("resName").innerText = foundStudent.name;
-                document.getElementById("resPhone").innerText = foundStudent.phone;
-                document.getElementById("resFather").innerText = foundStudent.father;
-                document.getElementById("resMother").innerText = foundStudent.mother;
-                document.getElementById("resSchool").innerText = foundStudent.school;
-                document.getElementById("resClass").innerText = foundStudent.cls;
-                document.getElementById("resClassRoll").innerText = foundStudent.classRoll;
-                document.getElementById("resCenter").innerText = foundStudent.center;
-
-                // শ্রেণি অনুযায়ী সঠিক পরীক্ষা নিয়ন্ত্রকের সিগনেচার ইমেজ সেট করা
-                const sigImg = document.getElementById("controllerSigImg");
-                if (foundStudent.cls === "চতুর্থ" || foundStudent.cls === "পঞ্চম" || foundStudent.cls === "৪র্থ" || foundStudent.cls === "৫ম") {
-                    sigImg.src = "4-5.sig.jpeg";
-                } else {
-                    sigImg.src = "6-10.sig.jpeg";
-                }
-
-                admitCard.style.display = "block";
-                printContainer.style.display = "block";
-            } else {
-                admitCard.style.display = "none";
-                printContainer.style.display = "none";
-                errorMsg.style.display = "block";
-            }
-        }
-    </script>
-</body>
-</html>
+                        <td id="resDate">নি
