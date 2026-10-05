@@ -6,6 +6,8 @@
     <title>প্রবেশপত্র - ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ | অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
     <link href="https://fonts.googleapis.com/css2?family=SolaimanLipi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
@@ -77,11 +79,11 @@
         /* অফলাইন এডমিট কার্ডের হুবহু ল্যান্ডস্কেপ সাইজ ও লেআউট */
         .admit-card {
             width: 275mm;
-            height: 145mm;
+            min-height: 158mm;
             margin: 30px auto;
             background: #ffffff;
             border: 2px solid #2e7d32;
-            padding: 20px 30px;
+            padding: 15px 25px;
             box-sizing: border-box;
             position: relative;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -108,7 +110,6 @@
         .card-content {
             position: relative;
             z-index: 1;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -119,13 +120,13 @@
             justify-content: space-between;
             align-items: flex-start;
             border-bottom: 2px solid #2e7d32;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .logo-area {
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,30 +150,30 @@
         .title-area h1 {
             color: #b30000;
             margin: 0;
-            font-size: 27px;
+            font-size: 25px;
             font-weight: bold;
         }
 
         .title-area p {
             margin: 2px 0;
-            font-size: 13px;
+            font-size: 12px;
             color: #333;
         }
 
         .title-area h3 {
             color: #003366;
-            margin: 4px 0 0 0;
-            font-size: 17px;
+            margin: 3px 0 0 0;
+            font-size: 15px;
         }
 
         .badge-title {
             background: #003366;
             color: white;
-            padding: 2px 25px;
+            padding: 2px 20px;
             display: inline-block;
             border-radius: 3px;
-            font-size: 13px;
-            margin-top: 4px;
+            font-size: 12px;
+            margin-top: 3px;
             font-weight: bold;
         }
 
@@ -180,43 +181,42 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 6px;
+            gap: 5px;
         }
 
         .photo-box {
-            width: 85px;
-            height: 100px;
+            width: 75px;
+            height: 90px;
             border: 1px dashed #666;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 10px;
             color: #666;
             background: #fafafa;
             text-align: center;
         }
 
         .roll-box {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
         }
 
         .roll-box span {
             border: 1px solid #ccc;
-            padding: 2px 10px;
+            padding: 2px 8px;
             background: #fff;
             color: #b30000;
             font-weight: bold;
             margin-left: 4px;
             display: inline-block;
-            min-width: 90px;
+            min-width: 80px;
             text-align: center;
         }
 
-        /* স্টুডেন্ট ইনফো রো - বোল্ড টেক্সট */
         .info-row {
-            margin-bottom: 8px;
-            font-size: 15px;
+            margin-bottom: 5px;
+            font-size: 13.5px;
             display: flex;
             gap: 15px;
             align-items: baseline;
@@ -234,21 +234,14 @@
             color: #002244;
         }
 
-        /* পরীক্ষা কেন্দ্র হাইলাইট বক্স */
         .exam-center-box {
             border: 2px solid #003366;
             background: #f0f4f8;
             border-radius: 4px;
-            margin: 8px 0;
-            padding: 8px 12px;
-            font-size: 15px;
+            margin: 5px 0;
+            padding: 5px 10px;
+            font-size: 13.5px;
             color: #002244;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 51, 102, 0.08);
-        }
-
-        .exam-center-box span {
-            color: #000;
             font-weight: bold;
         }
 
@@ -261,21 +254,22 @@
             background: #2e7d32;
             color: white;
             text-align: center;
-            padding: 4px;
+            padding: 3px;
             font-weight: bold;
-            font-size: 14px;
-            margin-top: 4px;
+            font-size: 13px;
+            margin-top: 3px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
+            font-size: 12px;
+            margin-bottom: 6px;
         }
 
         .schedule-table th, .schedule-table td {
             border: 1px solid #2e7d32;
-            padding: 5px 10px;
+            padding: 4px 8px;
             text-align: left;
         }
 
@@ -283,19 +277,86 @@
             background: #f1f8f1;
         }
 
-        .footer-signatures {
+        .rules-section {
+            border: 1px solid #2e7d32;
+            border-radius: 4px;
+            padding: 5px 8px;
+            background: #fafafa;
+            margin-bottom: 6px;
+        }
+
+        .rules-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 3px;
+            border-bottom: 1px solid #c8e6c9;
+            padding-bottom: 2px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px 15px;
+            font-size: 10.5px;
+            color: #333;
+        }
+
+        .footer-section {
             display: flex;
             justify-content: space-between;
-            margin-top: 15px;
-            font-size: 13px;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .qr-verification {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #qrcode img {
+            width: 55px !important;
+            height: 55px !important;
+        }
+
+        .verified-text {
+            font-size: 9.5px;
+            line-height: 1.2;
             font-weight: bold;
+            color: #003366;
+        }
+
+        .footer-signatures {
+            display: flex;
+            gap: 30px;
+            font-size: 11.5px;
+            font-weight: bold;
+        }
+
+        .sig-box {
+            text-align: center;
+            width: 160px;
+        }
+
+        .sig-img-container {
+            height: 38px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 2px;
+        }
+
+        .sig-img-container img {
+            max-height: 38px;
+            max-width: 130px;
+            object-fit: contain;
         }
 
         .sig-line {
             border-top: 1px solid #000;
-            width: 170px;
-            text-align: center;
-            padding-top: 3px;
+            padding-top: 2px;
         }
 
         .print-btn-container {
@@ -342,8 +403,8 @@
                 box-shadow: none;
                 border: 2px solid #2e7d32 !important;
                 margin: 0;
-                width: 210mm;
-                height: 130mm;
+                width: 275mm;
+                height: 150mm;
                 page-break-after: avoid;
             }
         }
@@ -362,7 +423,7 @@
         <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো রেজিস্ট্রেশন পাওয়া যায়নি।</div>
     </div>
 
-    <!-- বোল্ড ইনফো ও হাইলাইটেড কেন্দ্র সহ এডমিট কার্ড -->
+    <!-- মূল এডমিট কার্ড টেমপ্লেট -->
     <div class="admit-card" id="admitCard">
         <div class="card-content">
             <div class="header-section">
@@ -383,8 +444,8 @@
 
             <div>
                 <div class="info-row">
-                    <div class="info-item"><strong>পরীক্ষার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
-                    <div class="info-item" style="flex: 0 0 250px;"><strong>মোবাইল:</strong> <span id="resPhone" style="width: 160px;">----------------</span></div>
+                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
+                    <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span id="resPhone" style="width: 150px;">----------------</span></div>
                 </div>
 
                 <div class="info-row">
@@ -399,9 +460,8 @@
                 </div>
             </div>
 
-            <!-- হাইলাইটেড পরীক্ষা কেন্দ্র -->
             <div class="exam-center-box">
-                <i class="fas fa-map-marker-alt"></i> <strong>পরীক্ষা কেন্দ্র:</strong> <span id="resCenter">হাজী মদরিছ আলী উচ্চ বিদ্যালয়, ফতেপুর।</span>
+                <i class="fas fa-map-marker-alt"></i> <strong>পরীক্ষা কেন্দ্র:</strong> <span id="resCenter">ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।</span>
             </div>
 
             <div>
@@ -412,18 +472,55 @@
                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                     </tr>
                     <tr>
-                        <td id="resDate">ন৬ নভেম্বর ২০২৬,শুক্রবার</td>
+                        <td id="resDate">নির্ধারিত তারিখ অনুযায়ী</td>
                         <td>
-                            সকাল ১০:৩০ মিনিট থেকে দুপুর ১২:১০ মিনিট পর্যন্ত<br>
-                            <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
+                            সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
                         </td>
                     </tr>
                 </table>
             </div>
 
-            <div class="footer-signatures">
-                <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
-                <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
+            <!-- পরীক্ষা সংক্রান্ত নিয়মাবলি -->
+            <div class="rules-section">
+                <div class="rules-title">পরীক্ষা সংক্রান্ত জরুরি নিয়মাবলি</div>
+                <div class="rules-grid">
+                    <div>১. পরীক্ষার ৩০ মিনিট পূর্বে কেন্দ্রে উপস্থিত হতে হবে।</div>
+                    <div>৭. উত্তর সংশোধনে ঘষামাজা বা ফুইড ব্যবহার নিষেধ।</div>
+                    <div>২. প্রবেশপত্র সঙ্গে আনা বাধ্যতামূলক।</div>
+                    <div>৮. উত্তরপত্রে অতিরিক্ত কোনো দাগ বা লেখা যাবে না।</div>
+                    <div>৩. মোবাইল, স্মার্টওয়াচ বা কোনো অননুমোদিত সামগ্রী নিষিদ্ধ।</div>
+                    <div>৯. উত্তরপত্রেই উত্তর দেওয়া আবশ্যক।</div>
+                    <div>৪. মানবণ্টন অনুযায়ী পরীক্ষা ওএমআর পদ্ধতিতে হবে।</div>
+                    <div>১০. অসদুপায় অবলম্বন ও কথা বলা সম্পূর্ণ নিষিদ্ধ।</div>
+                    <div>৫. উত্তরপত্রের বৃত্ত কালো বলপেন দিয়ে ভরাট করতে হবে।</div>
+                    <div>১১. পরীক্ষা শেষে খাতা জমা দিয়ে হল ত্যাগ করতে হবে।</div>
+                    <div>৬. একটি প্রশ্নে একাধিক বৃত্ত পূরণ করা যাবে না।</div>
+                </div>
+            </div>
+
+            <!-- ফুটার: কিউআর কোড এবং সিগনেচার ছবিসহ -->
+            <div class="footer-section">
+                <div class="qr-verification">
+                    <div id="qrcode"></div>
+                    <div class="verified-text">
+                        <span style="color: #2e7d32; font-weight: bold;"><i class="fas fa-check-circle"></i> VERIFIED</span><br>
+                        অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
+                        <span style="font-size: 8px; color: #555;">স্ক্যান করে সত্যতা যাচাই করুন</span>
+                    </div>
+                </div>
+
+                <div class="footer-signatures">
+                    <div class="sig-box">
+                        <div class="sig-img-container">
+                            <img id="controllerSigImg" src="" alt="Signature">
+                        </div>
+                        <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
+                    </div>
+                    <div class="sig-box">
+                        <div class="sig-img-container"></div>
+                        <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -434,9 +531,21 @@
     </div>
 
     <script>
+        // কিউআর কোড জেনারেটর
+        window.onload = function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
+                width: 55,
+                height: 55,
+                colorDark : "#003366",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        };
+
         const studentsData = [
             {
-                phone: "01718377228",
+                phone: "01711111111",
                 roll: "1001",
                 name: "মো: আব্দুল্লাহ আল মামুন",
                 father: "মো: আব্দুর রহিম",
@@ -447,15 +556,15 @@
                 center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
             },
             {
-                phone: "01722138160",
+                phone: "01822222222",
                 roll: "1002",
-                name: "নীলুফা হক",
+                name: "জান্নাতুল ফেরদৌস",
                 father: "রফিকুল ইসলাম",
                 mother: "সাজেদা বেগম",
                 school: "গোয়াইনঘাট আদর্শ উচ্চ বিদ্যালয়",
                 cls: "অষ্টম",
                 classRoll: "১২",
-                center: "হাজী মদরিছ আলী উচ্চ বিদ্যালয়,ফতেপুর"
+                center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
             }
         ];
 
@@ -479,6 +588,14 @@
                 document.getElementById("resClass").innerText = foundStudent.cls;
                 document.getElementById("resClassRoll").innerText = foundStudent.classRoll;
                 document.getElementById("resCenter").innerText = foundStudent.center;
+
+                // শ্রেণি অনুযায়ী সঠিক পরীক্ষা নিয়ন্ত্রকের সিগনেচার ইমেজ সেট করা
+                const sigImg = document.getElementById("controllerSigImg");
+                if (foundStudent.cls === "চতুর্থ" || foundStudent.cls === "পঞ্চম" || foundStudent.cls === "৪র্থ" || foundStudent.cls === "৫ম") {
+                    sigImg.src = "4-5.sig.jpeg";
+                } else {
+                    sigImg.src = "6-10.sig.jpeg";
+                }
 
                 admitCard.style.display = "block";
                 printContainer.style.display = "block";
