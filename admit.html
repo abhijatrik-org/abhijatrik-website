@@ -6,8 +6,9 @@
     <title>প্রবেশপত্র - ৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬ | অভিযাত্রিক সমাজকল্যাণ সংস্থা</title>
     <link href="https://fonts.googleapis.com/css2?family=SolaimanLipi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- QR Code Generator Library -->
+    <!-- QR Code & PapaParse for Google Sheets -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
@@ -76,7 +77,6 @@
             background-color: #002244;
         }
 
-        /* অফলাইন এডমিট কার্ডের হুবহু ল্যান্ডস্কেপ সাইজ ও লেআউট */
         .admit-card {
             width: 275mm;
             min-height: 158mm;
@@ -91,7 +91,6 @@
             overflow: hidden;
         }
 
-        /* ব্যাকগ্রাউন্ড ওয়াটারমার্ক লোগো */
         .admit-card::before {
             content: "";
             position: absolute;
@@ -348,7 +347,6 @@
             margin-bottom: 0px;
         }
 
-        /* সিগনেচার স্টাইল (স্বচ্ছ পিএনজি ছবির জন্য) */
         .sig-img-container img {
             max-height: 42px;
             max-width: 130px;
@@ -414,7 +412,6 @@
 </head>
 <body>
 
-    <!-- সার্চ বক্স সেকশন -->
     <div class="search-container" id="searchSection">
         <h2>প্রবেশপত্র ডাউনলোড (Admit Card)</h2>
         <p>রেজিস্ট্রেশনের সময় প্রদানকৃত আপনার <b>মোবাইল নম্বরটি</b> নিচে লিখে সার্চ করুন:</p>
@@ -422,10 +419,9 @@
             <input type="text" id="phoneInput" placeholder="মোবাইল নম্বর দিন (যেমন: 017xxxxxxxx)">
             <button onclick="searchAdmitCard()"><i class="fas fa-search"></i> Search</button>
         </div>
-        <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো রেজিস্ট্রেশন পাওয়া যায়নি।</div>
+        <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত প্রবেশপত্র পাওয়া যায়নি।</div>
     </div>
 
-    <!-- মূল এডমিট কার্ড টেমপ্লেট -->
     <div class="admit-card" id="admitCard">
         <div class="card-content">
             <div class="header-section">
@@ -446,7 +442,7 @@
 
             <div>
                 <div class="info-row">
-                    <div class="info-item"><strong>পরীক্ষার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
+                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span id="resName" style="width: 76%;">-----------------------------</span></div>
                     <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span id="resPhone" style="width: 150px;">----------------</span></div>
                 </div>
 
@@ -473,7 +469,7 @@
                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                     </tr>
                     <tr>
-                        <td id="resDate">৬ নভেম্বর ২০২৬, শুক্রবার</td>
+                        <td id="resDate">০৬ নভেম্বর ২০২৬ (শুক্রবার)</td>
                         <td>
                             সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
                         </td>
@@ -481,7 +477,6 @@
                 </table>
             </div>
 
-            <!-- পরীক্ষা সংক্রান্ত নিয়মাবলি -->
             <div class="rules-section">
                 <div class="rules-title">পরীক্ষা সংক্রান্ত জরুরি নিয়মাবলি</div>
                 <div class="rules-grid">
@@ -499,7 +494,6 @@
                 </div>
             </div>
 
-            <!-- ফুটার: কিউআর কোড এবং সিগনেচার -->
             <div class="footer-section">
                 <div class="qr-verification">
                     <div id="qrcode"></div>
@@ -526,13 +520,15 @@
         </div>
     </div>
 
-    <!-- প্রিন্ট বাটন -->
     <div class="print-btn-container" id="printContainer" style="display: none;">
         <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট বা ডাউনলোড করুন</button>
     </div>
 
     <script>
-        // কিউআর কোড জেনারেটর
+        // গুগল শিটের লাইভ পাবলিশড CSV লিংক
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRrTjafzRLCP8ASUslH90svXpyn3TekB4SPwqrieG0rzaZ9UwokZHZAY09vyr5BKZYOBQjogoLLCcC9/pub?gid=2099876138&single=true&output=csv";
+        let studentsData = [];
+
         window.onload = function() {
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
@@ -542,30 +538,31 @@
                 colorLight : "#ffffff",
                 correctLevel : QRCode.CorrectLevel.H
             });
+
+            // গুগল শিট থেকে লাইভ ডেটা পড়া
+            if (SHEET_CSV_URL && SHEET_CSV_URL.startsWith("http")) {
+                Papa.parse(SHEET_CSV_URL, {
+                    download: true,
+                    header: true,
+                    complete: function(results) {
+                        studentsData = results.data;
+                    }
+                });
+            }
         };
 
-        const studentsData = [
-            {
-                phone: "01711111111",
-                roll: "1001",
-                name: "নিলুফা হক",
-                father: "মো: আব্দুর রহিম",
-                mother: "ফাতেমা বেগম",
-                school: "ফতেপুর সরকারি প্রাথমিক বিদ্যালয়",
-                cls: "পঞ্চম",
-                center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
-            },
-            {
-                phone: "01722138160",
-                roll: "1002",
-                name: "জান্নাতুল ফেরদৌস",
-                father: "রফিকুল ইসলাম",
-                mother: "সাজেদা বেগম",
-                school: "চিকনাগুল আদর্শ উচ্চ বিদ্যালয়",
-                cls: "অষ্টম",
-                center: "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।"
+        function getFieldValue(obj, fieldNames) {
+            for (let name of fieldNames) {
+                for (let key in obj) {
+                    if (key.trim().toLowerCase() === name.trim().toLowerCase()) {
+                        if (obj[key] !== undefined && obj[key] !== null && obj[key].toString().trim() !== "") {
+                            return obj[key].toString().trim();
+                        }
+                    }
+                }
             }
-        ];
+            return "";
+        }
 
         function searchAdmitCard() {
             const phoneVal = document.getElementById("phoneInput").value.trim();
@@ -573,23 +570,50 @@
             const admitCard = document.getElementById("admitCard");
             const printContainer = document.getElementById("printContainer");
 
-            const foundStudent = studentsData.find(s => s.phone === phoneVal);
+            if (!phoneVal) {
+                errorMsg.innerText = "দয়া করে একটি সঠিক মোবাইল নম্বর লিখুন।";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            // মোবাইল নম্বর মিলিয়ে স্টুডেন্ট খোঁজা
+            const foundStudent = studentsData.find(s => {
+                const phone = getFieldValue(s, ["মোবাইল নম্বর", "Mobile", "Phone", "মোবাইল"]);
+                return phone === phoneVal;
+            });
 
             if (foundStudent) {
-                errorMsg.style.display = "none";
-                
-                document.getElementById("resRoll").innerText = foundStudent.roll;
-                document.getElementById("resName").innerText = foundStudent.name;
-                document.getElementById("resPhone").innerText = foundStudent.phone;
-                document.getElementById("resFather").innerText = foundStudent.father;
-                document.getElementById("resMother").innerText = foundStudent.mother;
-                document.getElementById("resSchool").innerText = foundStudent.school;
-                document.getElementById("resClass").innerText = foundStudent.cls;
-                document.getElementById("resCenter").innerText = foundStudent.center;
+                const roll = getFieldValue(foundStudent, ["বৃত্তি রোল", "Roll", "রোল"]);
 
-                // শ্রেণি অনুযায়ী সঠিক পরীক্ষা নিয়ন্ত্রকের সিগনেচার ইমেজ সেট করা
+                // রোল নম্বর না থাকলে (অর্থাৎ পেমেন্ট বাকি/ভেরিফাই হয়নি)
+                if (!roll) {
+                    admitCard.style.display = "none";
+                    printContainer.style.display = "none";
+                    errorMsg.innerText = "আপনার আবেদনটি পাওয়া গেছে, তবে ফি জমা/ভেরিফিকেশন এখনও সম্পন্ন হয়নি। দয়া করে আয়োজকদের সাথে যোগাযোগ করুন।";
+                    errorMsg.style.display = "block";
+                    return;
+                }
+
+                // ভেরিফাইড হলে এডমিট কার্ড প্রদর্শন
+                errorMsg.style.display = "none";
+
+                const name = getFieldValue(foundStudent, ["পরীক্ষার্থীর নাম (বাংলা)", "Name", "নাম"]);
+                const father = getFieldValue(foundStudent, ["পিতার নাম", "Father"]);
+                const mother = getFieldValue(foundStudent, ["মাতার নাম", "Mother"]);
+                const school = getFieldValue(foundStudent, ["শিক্ষা প্রতিষ্ঠানের নাম", "School", "প্রতিষ্ঠান"]);
+                const cls = getFieldValue(foundStudent, ["শ্রেণি", "Class"]);
+
+                document.getElementById("resRoll").innerText = roll;
+                document.getElementById("resName").innerText = name || "----";
+                document.getElementById("resPhone").innerText = phoneVal;
+                document.getElementById("resFather").innerText = father || "----";
+                document.getElementById("resMother").innerText = mother || "----";
+                document.getElementById("resSchool").innerText = school || "----";
+                document.getElementById("resClass").innerText = cls || "----";
+
+                // শ্রেণি অনুযায়ী স্বয়ংক্রিয় পরীক্ষা নিয়ন্ত্রকের সিগনেচার লজিক (৪র্থ-৫ম হলে 4.5.png, ৬ষ্ঠ-১০ম হলে 6.10.png)
                 const sigImg = document.getElementById("controllerSigImg");
-                if (foundStudent.cls === "চতুর্থ" || foundStudent.cls === "পঞ্চম" || foundStudent.cls === "৪র্থ" || foundStudent.cls === "৫ম") {
+                if (cls.includes("চতুর্থ") || cls.includes("পঞ্চম") || cls.includes("৪র্থ") || cls.includes("৫ম") || cls === "4" || cls === "5") {
                     sigImg.src = "4.5.png";
                 } else {
                     sigImg.src = "6.10.png";
@@ -600,6 +624,7 @@
             } else {
                 admitCard.style.display = "none";
                 printContainer.style.display = "none";
+                errorMsg.innerText = "দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত আবেদন পাওয়া যায়নি।";
                 errorMsg.style.display = "block";
             }
         }
