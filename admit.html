@@ -431,7 +431,6 @@
         <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত প্রবেশপত্র পাওয়া যায়নি।</div>
     </div>
 
-    <!-- একাধিক কার্ড প্রদর্শনের জন্য কন্টেইনার -->
     <div class="cards-wrapper" id="cardsWrapper"></div>
 
     <div class="print-btn-container" id="printContainer">
@@ -454,13 +453,14 @@
             }
         };
 
-        // নির্দিষ্ট কলামের ডেটা পাওয়ার ফাংশন
-        function getExactField(obj, targetFields) {
-            for (let target of targetFields) {
+        // ফ্লেক্সিবল কলাম ভ্যালু রিডার (বাংলা নাম প্রাধান্য পাবে)
+        function getValueByFlexibleHeader(obj, keywords) {
+            for (let kw of keywords) {
                 for (let key in obj) {
-                    if (key.trim() === target.trim()) {
-                        if (obj[key] !== undefined && obj[key] !== null && obj[key].toString().trim() !== "") {
-                            return obj[key].toString().trim();
+                    if (key.trim().toLowerCase().includes(kw.toLowerCase())) {
+                        let val = obj[key];
+                        if (val !== undefined && val !== null && val.toString().trim() !== "") {
+                            return val.toString().trim();
                         }
                     }
                 }
@@ -483,16 +483,16 @@
                 return;
             }
 
-            // মোবাইল নম্বর মিলিয়ে সব স্টুডেন্ট খোঁজা (এক নম্বরে একাধিক থাকলে সবাই আসবে)
+            // মোবাইল নম্বর দিয়ে স্টুডেন্ট ফিল্টার
             const matchedStudents = studentsData.filter(s => {
-                const phone = getExactField(s, ["মোবাইল নম্বর", "Mobile", "Phone", "মোবাইল"]);
+                const phone = getValueByFlexibleHeader(s, ["মোবাইল নম্বর", "মোবাইল", "mobile", "phone", "নম্বর"]);
                 return phone === phoneVal;
             });
 
             if (matchedStudents.length > 0) {
-                // শুধু যাদের রোল দেওয়া আছে (ভেরিফাইড) তাদের ফিল্টার করা
+                // ভেরিফাইড (রোল দেওয়া) স্টুডেন্ট ফিল্টার
                 const verifiedStudents = matchedStudents.filter(s => {
-                    const roll = getExactField(s, ["বৃত্তি রোল", "Roll", "রোল"]);
+                    const roll = getValueByFlexibleHeader(s, ["বৃত্তি রোল", "রোল", "roll"]);
                     return roll !== "";
                 });
 
@@ -504,23 +504,23 @@
 
                 errorMsg.style.display = "none";
 
-                // ভেরিফাইড সব স্টুডেন্টের এডমিট কার্ড তৈরি করা
                 verifiedStudents.forEach((student, index) => {
-                    const roll = getExactField(student, ["বৃত্তি রোল", "Roll", "রোল"]);
-                    const name = getExactField(student, ["পরীক্ষার্থীর নাম (বাংলা)", "Name", "নাম"]);
-                    const father = getExactField(student, ["পিতার নাম", "Father"]);
-                    const mother = getExactField(student, ["মাতার নাম", "Mother"]);
-                    const school = getExactField(student, ["শিক্ষা প্রতিষ্ঠানের নাম", "School", "প্রতিষ্ঠান"]);
-                    const cls = getExactField(student, ["শ্রেণি", "Class"]);
-                    let center = getExactField(student, ["পরীক্ষা কেন্দ্র", "Center", "কেন্দ্র"]);
+                    const roll = getValueByFlexibleHeader(student, ["বৃত্তি রোল", "রোল", "roll"]);
+                    const name = getValueByFlexibleHeader(student, ["পরীক্ষার্থীর নাম (বাংলা)", "বাংলা", "নাম"]);
+                    const father = getValueByFlexibleHeader(student, ["পিতার নাম", "পিতা"]);
+                    const mother = getValueByFlexibleHeader(student, ["মাতার নাম", "মাতা"]);
+                    const school = getValueByFlexibleHeader(student, ["শিক্ষা প্রতিষ্ঠানের নাম", "প্রতিষ্ঠানের নাম", "স্কুল", "school"]);
+                    const cls = getValueByFlexibleHeader(student, ["শ্রেণি", "শ্রেণী", "class"]);
+                    let center = getValueByFlexibleHeader(student, ["পরীক্ষা কেন্দ্র", "কেন্দ্র", "center"]);
 
                     if (!center) {
                         center = "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।";
                     }
 
-                    // শ্রেণি অনুযায়ী পরীক্ষা নিয়ন্ত্রকের সিগনেচার নির্ধারণ
+                    // শ্রেণি অনুযায়ী স্বাক্ষর নির্বাচন লজিক
                     let sigSrc = "6.10.png";
-                    if (cls.includes("৪র্থ") || cls.includes("৫ম") || cls.includes("চতুর্থ") || cls.includes("পঞ্চম") || cls.trim() === "4" || cls.trim() === "5") {
+                    const cleanCls = cls.toLowerCase();
+                    if (cleanCls.includes("৪") || cleanCls.includes("৫") || cleanCls.includes("চতুর্থ") || cleanCls.includes("পঞ্চম") || cleanCls.includes("4") || cleanCls.includes("5")) {
                         sigSrc = "4.5.png";
                     }
 
@@ -627,7 +627,6 @@
 
                     cardsWrapper.insertAdjacentHTML('beforeend', cardHTML);
 
-                    // কিউআর কোড রেন্ডার
                     new QRCode(document.getElementById(qrId), {
                         text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
                         width: 55,
