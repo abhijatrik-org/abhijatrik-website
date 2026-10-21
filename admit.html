@@ -438,7 +438,7 @@
     </div>
 
     <script>
-        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRrTjafzRLCP8ASUslH90svXpyn3TekB4SPwqrieG0rzaZ9UwokZHZAY09vyr5BKZYOBQjogoLLCcC9/pub?gid=2099876138&single=true&output=csv";
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQF0GPVe74D_NOYumFLo3aJDQZEwU-r_3Q1Lolhq_YD_t92n-TJzIy0iA0YyOkocc5WqeaqWeKD-K0U/pub?gid=0&single=true&output=csv";
         let studentsData = [];
 
         window.onload = function() {
@@ -453,15 +453,13 @@
             }
         };
 
-        // ফ্লেক্সিবল কলাম ভ্যালু রিডার (বাংলা নাম প্রাধান্য পাবে)
-        function getValueByFlexibleHeader(obj, keywords) {
-            for (let kw of keywords) {
-                for (let key in obj) {
-                    if (key.trim().toLowerCase().includes(kw.toLowerCase())) {
-                        let val = obj[key];
-                        if (val !== undefined && val !== null && val.toString().trim() !== "") {
-                            return val.toString().trim();
-                        }
+        // নির্দিষ্ট কলামের তথ্য রিটার্ন করার ফাংশন
+        function getFieldValue(obj, keyName) {
+            for (let key in obj) {
+                if (key.trim().toLowerCase() === keyName.toLowerCase()) {
+                    let val = obj[key];
+                    if (val !== undefined && val !== null) {
+                        return val.toString().trim();
                     }
                 }
             }
@@ -483,21 +481,21 @@
                 return;
             }
 
-            // মোবাইল নম্বর দিয়ে স্টুডেন্ট ফিল্টার
+            // মোবাইল নম্বর মিলিয়ে স্টুডেন্ট ফিল্টার করা (কলাম F: Mobile)
             const matchedStudents = studentsData.filter(s => {
-                const phone = getValueByFlexibleHeader(s, ["মোবাইল নম্বর", "মোবাইল", "mobile", "phone", "নম্বর"]);
+                const phone = getFieldValue(s, "Mobile");
                 return phone === phoneVal;
             });
 
             if (matchedStudents.length > 0) {
-                // ভেরিফাইড (রোল দেওয়া) স্টুডেন্ট ফিল্টার
+                // ভেরিফাইড (রোল দেওয়া) স্টুডেন্ট ফিল্টার করা (কলাম G: Roll)
                 const verifiedStudents = matchedStudents.filter(s => {
-                    const roll = getValueByFlexibleHeader(s, ["বৃত্তি রোল", "রোল", "roll"]);
+                    const roll = getFieldValue(s, "Roll");
                     return roll !== "";
                 });
 
                 if (verifiedStudents.length === 0) {
-                    errorMsg.innerText = "আপনার আবেদনটি পাওয়া গেছে, তবে ফি জমা/ভেরিফিকেশন এখনও সম্পন্ন হয়নি। দয়া করে আয়োজকদের সাথে যোগাযোগ করুন।";
+                    errorMsg.innerText = "আপনার আবেদনটি পাওয়া গেছে, তবে ফি জমা/ভেরিফিকেশন এখনও সম্পন্ন হয়নি। দয়া করে 01718377229 এই নাম্বারে যোগাযোগ করুন।";
                     errorMsg.style.display = "block";
                     return;
                 }
@@ -505,22 +503,22 @@
                 errorMsg.style.display = "none";
 
                 verifiedStudents.forEach((student, index) => {
-                    const roll = getValueByFlexibleHeader(student, ["বৃত্তি রোল", "রোল", "roll"]);
-                    const name = getValueByFlexibleHeader(student, ["পরীক্ষার্থীর নাম (বাংলা)", "বাংলা", "নাম"]);
-                    const father = getValueByFlexibleHeader(student, ["পিতার নাম", "পিতা"]);
-                    const mother = getValueByFlexibleHeader(student, ["মাতার নাম", "মাতা"]);
-                    const school = getValueByFlexibleHeader(student, ["শিক্ষা প্রতিষ্ঠানের নাম", "প্রতিষ্ঠানের নাম", "স্কুল", "school"]);
-                    const cls = getValueByFlexibleHeader(student, ["শ্রেণি", "শ্রেণী", "class"]);
-                    let center = getValueByFlexibleHeader(student, ["পরীক্ষা কেন্দ্র", "কেন্দ্র", "center"]);
+                    const name = getFieldValue(student, "Name");       // A: Name
+                    const father = getFieldValue(student, "Father");   // B: Father
+                    const mother = getFieldValue(student, "Mother");   // C: Mother
+                    const school = getFieldValue(student, "School");   // D: School
+                    const cls = getFieldValue(student, "Class");       // E: Class
+                    const roll = getFieldValue(student, "Roll");       // G: Roll
+                    let center = getFieldValue(student, "Center");      // H: Center
 
                     if (!center) {
                         center = "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।";
                     }
 
-                    // শ্রেণি অনুযায়ী স্বাক্ষর নির্বাচন লজিক
+                    // শ্রেণি অনুযায়ী পরীক্ষা নিয়ন্ত্রকের সিগনেচার নির্ধারণ (৪র্থ-৫ম হলে 4.5.png, ৬ষ্ঠ-১০ম হলে 6.10.png)
                     let sigSrc = "6.10.png";
                     const cleanCls = cls.toLowerCase();
-                    if (cleanCls.includes("৪") || cleanCls.includes("৫") || cleanCls.includes("চতুর্থ") || cleanCls.includes("পঞ্চম") || cleanCls.includes("4") || cleanCls.includes("5")) {
+                    if (cleanCls.includes("৪") || cleanCls.includes("৫") || cleanCls.includes("চতুর্থ") || cleanCls.includes("পঞ্চম") || cleanCls.includes("4") || cleanCls.includes("5") || cleanCls.includes("four") || cleanCls.includes("five")) {
                         sigSrc = "4.5.png";
                     }
 
@@ -540,7 +538,7 @@
                                     <div class="badge-title">প্রবেশপত্র</div>
                                 </div>
                                 <div class="top-right-section">
-                                    <div class="roll-box">বৃত্তি রোল: <span>${roll}</span></div>
+                                    <div class="roll-box">বৃত্তি রোল: <span>${roll || '----'}</span></div>
                                     <div class="photo-box">স্ট্যাম্প সাইজ ছবি</div>
                                 </div>
                             </div>
