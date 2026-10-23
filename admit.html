@@ -14,15 +14,15 @@
             font-family: 'SolaimanLipi', Arial, sans-serif;
             background-color: #f1f5f9;
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             color: #000;
         }
 
         .search-container {
             max-width: 700px;
-            margin: 40px auto;
+            margin: 30px auto;
             background: #ffffff;
-            padding: 35px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             text-align: center;
@@ -32,69 +32,63 @@
         .search-container h2 {
             color: #003366;
             margin-bottom: 10px;
-            font-size: 26px;
+            font-size: 24px;
         }
 
         .search-container p {
             color: #555;
-            margin-bottom: 25px;
-            font-size: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
 
         .search-form {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
         }
 
         .search-form input {
-            padding: 12px 18px;
+            padding: 10px 15px;
             width: 65%;
             border: 2px solid #cbd5e1;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
-            transition: 0.3s;
-        }
-
-        .search-form input:focus {
-            border-color: #003366;
         }
 
         .search-form button {
-            padding: 12px 25px;
+            padding: 10px 22px;
             background-color: #003366;
             color: white;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .search-form button:hover {
-            background-color: #002244;
         }
 
         .cards-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 30px;
         }
 
+        /* কার্ডের হাইট নিখুঁতভাবে কম্প্যাক্ট করা হলো */
         .admit-card {
-            width: 275mm;
-            min-height: 158mm;
+            width: 260mm;
+            height: 125mm;
             margin: 0 auto;
             background: #ffffff;
             border: 2px solid #2e7d32;
-            padding: 15px 25px;
+            padding: 10px 20px;
             box-sizing: border-box;
             position: relative;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             overflow: hidden;
             page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .admit-card::before {
@@ -103,8 +97,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 450px;
-            height: 450px;
+            width: 380px;
+            height: 380px;
             background: url('logo.jpg.jpeg') no-repeat center center;
             background-size: contain;
             opacity: 0.04;
@@ -117,6 +111,7 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
+            height: 100%;
             justify-content: space-between;
         }
 
@@ -125,13 +120,13 @@
             justify-content: space-between;
             align-items: flex-start;
             border-bottom: 2px solid #2e7d32;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
+            padding-bottom: 4px;
+            margin-bottom: 4px;
         }
 
         .logo-area {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,36 +144,35 @@
         .title-area {
             text-align: center;
             flex-grow: 1;
-            padding-top: 2px;
         }
 
         .title-area h1 {
             color: #b30000;
             margin: 0;
-            font-size: 25px;
+            font-size: 21px;
             font-weight: bold;
         }
 
         .title-area p {
-            margin: 2px 0;
-            font-size: 12px;
+            margin: 1px 0;
+            font-size: 11px;
             color: #333;
         }
 
         .title-area h3 {
             color: #003366;
-            margin: 3px 0 0 0;
-            font-size: 15px;
+            margin: 2px 0 0 0;
+            font-size: 13.5px;
         }
 
         .badge-title {
             background: #003366;
             color: white;
-            padding: 2px 20px;
+            padding: 1px 16px;
             display: inline-block;
             border-radius: 3px;
-            font-size: 12px;
-            margin-top: 3px;
+            font-size: 11px;
+            margin-top: 2px;
             font-weight: bold;
         }
 
@@ -186,42 +180,42 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 5px;
+            gap: 3px;
         }
 
         .photo-box {
-            width: 75px;
-            height: 90px;
+            width: 65px;
+            height: 78px;
             border: 1px dashed #666;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: 9px;
             color: #666;
             background: #fafafa;
             text-align: center;
         }
 
         .roll-box {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
         }
 
         .roll-box span {
             border: 1px solid #ccc;
-            padding: 2px 8px;
+            padding: 1px 6px;
             background: #fff;
             color: #b30000;
             font-weight: bold;
             margin-left: 4px;
             display: inline-block;
-            min-width: 80px;
+            min-width: 70px;
             text-align: center;
         }
 
         .info-row {
-            margin-bottom: 6px;
-            font-size: 14px;
+            margin-bottom: 3px;
+            font-size: 12.5px;
             display: flex;
             gap: 15px;
             align-items: baseline;
@@ -237,17 +231,17 @@
             display: inline-block;
             font-weight: bold;
             color: #002244;
-            font-size: 14px;
+            font-size: 12.5px;
             line-height: 1.2;
         }
 
         .exam-center-box {
-            border: 2px solid #003366;
+            border: 1.5px solid #003366;
             background: #f0f4f8;
             border-radius: 4px;
-            margin: 6px 0;
-            padding: 6px 10px;
-            font-size: 14px;
+            margin: 3px 0;
+            padding: 3px 8px;
+            font-size: 12.5px;
             color: #002244;
             font-weight: bold;
         }
@@ -261,22 +255,22 @@
             background: #2e7d32;
             color: white;
             text-align: center;
-            padding: 4px;
+            padding: 2px;
             font-weight: bold;
-            font-size: 14px;
-            margin-top: 4px;
+            font-size: 12px;
+            margin-top: 2px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
-            margin-bottom: 8px;
+            font-size: 11.5px;
+            margin-bottom: 4px;
         }
 
         .schedule-table th, .schedule-table td {
             border: 1px solid #2e7d32;
-            padding: 6px 10px;
+            padding: 3px 6px;
             text-align: left;
         }
 
@@ -285,30 +279,30 @@
         }
 
         .rules-section {
-            border: 1.5px solid #2e7d32;
-            border-radius: 6px;
-            padding: 12px 18px;
+            border: 1.2px solid #2e7d32;
+            border-radius: 5px;
+            padding: 6px 12px;
             background: #fafafa;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .rules-title {
-            font-size: 15px;
+            font-size: 12.5px;
             font-weight: bold;
             color: #2e7d32;
             text-align: center;
-            margin-bottom: 10px;
-            border-bottom: 1.5px solid #c8e6c9;
-            padding-bottom: 6px;
+            margin-bottom: 4px;
+            border-bottom: 1px solid #c8e6c9;
+            padding-bottom: 2px;
         }
 
         .rules-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px 30px;
-            font-size: 13.5px;
+            gap: 2px 20px;
+            font-size: 11px;
             color: #111;
-            line-height: 1.5;
+            line-height: 1.35;
             font-weight: 500;
         }
 
@@ -316,40 +310,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 6px;
+            margin-top: 2px;
         }
 
         .qr-verification {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .qrcode-box img {
-            width: 55px !important;
-            height: 55px !important;
+            width: 45px !important;
+            height: 45px !important;
         }
 
         .verified-text {
-            font-size: 9.5px;
+            font-size: 8.5px;
             line-height: 1.2;
             font-weight: bold;
             color: #003366;
         }
 
         .seal-box {
-            width: 130px;
-            height: 130px;
+            width: 100px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 15px;
+            margin-left: 10px;
         }
 
-        /* সিলের কালার ম্যানুয়াল নীল স্ট্যাম্পের মতো করার জন্য ফিল্টার */
         .seal-box img {
-            max-width: 130px;
-            max-height: 130px;
+            max-width: 100px;
+            max-height: 100px;
             object-fit: contain;
             mix-blend-mode: multiply;
             filter: invert(16%) sepia(90%) saturate(3000%) hue-rotate(215deg) brightness(85%) contrast(110%);
@@ -357,39 +350,38 @@
 
         .footer-signatures {
             display: flex;
-            gap: 30px;
-            font-size: 11.5px;
+            gap: 20px;
+            font-size: 11px;
             font-weight: bold;
         }
 
         .sig-box {
             text-align: center;
-            width: 160px;
+            width: 130px;
         }
 
         .sig-img-container {
-            height: 40px;
+            height: 32px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            margin-bottom: 0px;
         }
 
         .sig-img-container img {
-            max-height: 42px;
-            max-width: 130px;
+            max-height: 34px;
+            max-width: 100px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
 
         .sig-line {
             border-top: 1px solid #000;
-            padding-top: 2px;
+            padding-top: 1px;
         }
 
         .print-btn-container {
             text-align: center;
-            margin: 25px 0;
+            margin: 20px 0;
             display: none;
         }
 
@@ -397,16 +389,12 @@
             background-color: #2e7d32;
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 16px;
+            padding: 10px 25px;
+            font-size: 15px;
             border-radius: 6px;
             cursor: pointer;
             font-family: 'SolaimanLipi', sans-serif;
             font-weight: bold;
-        }
-
-        .print-btn:hover {
-            background-color: #215e24;
         }
 
         .error-msg {
@@ -418,7 +406,7 @@
 
         @media print {
             @page {
-                size: landscape;
+                size: A4 landscape;
                 margin: 0;
             }
             body {
@@ -434,9 +422,9 @@
             .admit-card {
                 box-shadow: none;
                 border: 2px solid #2e7d32 !important;
-                margin: 0;
-                width: 275mm;
-                height: 150mm;
+                margin: auto;
+                width: 260mm;
+                height: 125mm;
             }
         }
     </style>
@@ -614,7 +602,7 @@
                                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                                     </tr>
                                     <tr>
-                                        <td><strong style="color: #000; font-size: 14px;">০৬ নভেম্বর ২০২৬ (শুক্রবার)</strong></td>
+                                        <td><strong style="color: #000; font-size: 13px;">০৬ নভেম্বর ২০২৬ (শুক্রবার)</strong></td>
                                         <td>
                                             সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
                                         </td>
@@ -672,8 +660,8 @@
 
                     new QRCode(document.getElementById(qrId), {
                         text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
-                        width: 55,
-                        height: 55,
+                        width: 45,
+                        height: 45,
                         colorDark : "#003366",
                         colorLight : "#ffffff",
                         correctLevel : QRCode.CorrectLevel.H
