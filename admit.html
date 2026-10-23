@@ -79,13 +79,15 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            padding: 10px;
+            padding: 15px;
+            width: 100%;
+            overflow-x: auto; 
         }
 
         /* প্রবেশপত্র মেইন বক্স - কালার লক করা */
         .admit-card {
-            width: 100%;
-            max-width: 1050px;
+            width: 1050px;
+            min-width: 1050px;
             margin: 0 auto;
             background: #ffffff !important;
             border: 2.5px solid #2e7d32 !important;
@@ -444,7 +446,7 @@
             display: none;
         }
 
-        /* প্রিন্ট ও পিডিএফ মোড ফিক্স */
+        /* প্রিন্ট ও পিডিএফ মোডের জন্য কালার প্রিজার্ভেশন রুলস */
         @media print {
             @page {
                 size: A4 landscape;
@@ -463,12 +465,13 @@
             .cards-wrapper {
                 padding: 0 !important;
                 margin: 0 !important;
+                overflow: visible !important;
             }
             .admit-card {
                 box-shadow: none !important;
                 border: 2.5px solid #2e7d32 !important;
-                width: 100% !important;
-                max-width: none !important;
+                width: 1050px !important;
+                min-width: 1050px !important;
                 margin: 0 auto !important;
                 background: #ffffff !important;
                 -webkit-print-color-adjust: exact !important;
