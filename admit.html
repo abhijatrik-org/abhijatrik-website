@@ -10,14 +10,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
             background-color: #f1f5f9;
             margin: 0;
             padding: 20px;
             color: #000;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
         }
 
         .search-container {
@@ -80,27 +83,26 @@
             width: 270mm;
             margin: 0 auto;
             background: #ffffff !important;
-            border: 2px solid #2e7d32 !important;
-            padding: 16px 24px;
+            border: 2.5px solid #2e7d32 !important;
+            padding: 16px 24px 12px 24px;
             box-sizing: border-box;
             position: relative;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             page-break-after: always;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
         }
 
+        /* ব্যাকগ্রাউন্ড জলছাপ (Watermark) স্পষ্টকরণ */
         .admit-card::before {
             content: "";
             position: absolute;
-            top: 50%;
+            top: 52%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 420px;
-            height: 420px;
+            width: 380px;
+            height: 380px;
             background: url('logo.jpg.jpeg') no-repeat center center;
             background-size: contain;
-            opacity: 0.04;
+            opacity: 0.08 !important; /* প্রিন্ট ও ডাউনলোডে পরিষ্কার বোঝার জন্য অপাসিটি বাড়ানো হয়েছে */
             z-index: 0;
             pointer-events: none;
         }
@@ -114,7 +116,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 2px solid #2e7d32 !important;
+            border-bottom: 2.5px solid #2e7d32 !important;
             padding-bottom: 6px;
             margin-bottom: 12px;
         }
@@ -132,7 +134,7 @@
             height: 100%;
             object-fit: contain;
             border-radius: 50%;
-            border: 2px solid #2e7d32;
+            border: 2px solid #2e7d32 !important;
             background: #fff;
         }
 
@@ -151,18 +153,19 @@
         .title-area p {
             margin: 2px 0;
             font-size: 12px;
-            color: #333;
+            color: #222 !important;
         }
 
         .title-area h3 {
             color: #003366 !important;
             margin: 2px 0 0 0;
             font-size: 15px;
+            font-weight: bold;
         }
 
         .badge-title {
             background: #003366 !important;
-            color: white !important;
+            color: #ffffff !important;
             padding: 2px 20px;
             display: inline-block;
             border-radius: 3px;
@@ -181,14 +184,15 @@
         .photo-box {
             width: 72px;
             height: 88px;
-            border: 1px dashed #666;
+            border: 1.5px dashed #444;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 9.5px;
-            color: #666;
+            color: #444;
             background: #fafafa;
             text-align: center;
+            font-weight: bold;
         }
 
         .roll-box {
@@ -197,7 +201,7 @@
         }
 
         .roll-box span {
-            border: 1px solid #ccc;
+            border: 1.5px solid #bbb;
             padding: 2px 8px;
             background: #fff;
             color: #b30000 !important;
@@ -208,13 +212,13 @@
             text-align: center;
         }
 
-        /* তথ্য সেকশন - পর্যাপ্ত স্পেস দিয়ে ছড়ানো */
+        /* তথ্য সেকশন */
         .info-container {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .info-row {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 14px;
             display: flex;
             gap: 25px;
@@ -234,7 +238,7 @@
         }
 
         .info-item span {
-            border-bottom: 1px dotted #000;
+            border-bottom: 1.2px dotted #000;
             flex-grow: 1;
             font-weight: bold;
             color: #002244 !important;
@@ -244,10 +248,10 @@
         }
 
         .exam-center-box {
-            border: 1.5px solid #003366 !important;
+            border: 2px solid #003366 !important;
             background: #f0f4f8 !important;
             border-radius: 4px;
-            margin: 10px 0;
+            margin: 8px 0;
             padding: 6px 12px;
             font-size: 14px;
             color: #002244 !important;
@@ -261,37 +265,39 @@
 
         .schedule-title {
             background: #2e7d32 !important;
-            color: white !important;
+            color: #ffffff !important;
             text-align: center;
             padding: 4px;
             font-weight: bold;
             font-size: 13.5px;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .schedule-table th, .schedule-table td {
-            border: 1px solid #2e7d32 !important;
+            border: 1.5px solid #2e7d32 !important;
             padding: 6px 10px;
             text-align: left;
         }
 
         .schedule-table th {
-            background: #f1f8f1 !important;
+            background: #e8f5e9 !important;
+            color: #000 !important;
+            font-weight: bold;
         }
 
         .rules-section {
-            border: 1.2px solid #2e7d32 !important;
+            border: 1.5px solid #2e7d32 !important;
             border-radius: 5px;
             padding: 10px 16px;
             background: #fafafa !important;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .rules-title {
@@ -300,7 +306,7 @@
             color: #2e7d32 !important;
             text-align: center;
             margin-bottom: 8px;
-            border-bottom: 1px solid #c8e6c9 !important;
+            border-bottom: 1.5px solid #c8e6c9 !important;
             padding-bottom: 4px;
         }
 
@@ -314,24 +320,26 @@
             font-weight: 500;
         }
 
-        /* ফুটার সেকশন */
+        /* ফুটার সেকশন - নিখুঁত হরিজন্টাল এলাইনমেন্ট (সবকিছু সমান লাইনে) */
         .footer-section {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 10px;
-            padding-top: 5px;
+            align-items: center !important; /* সব এলিমেন্টকে একই লেভেলে সেন্টার করা হলো */
+            margin-top: 6px;
+            padding-top: 4px;
         }
 
         .qr-verification {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .qrcode-box {
             width: 55px;
             height: 55px;
+            display: flex;
+            align-items: center;
         }
 
         .qrcode-box img {
@@ -347,35 +355,40 @@
         }
 
         .seal-box {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 10px;
+            margin-left: 5px;
         }
 
         .seal-box img {
-            max-width: 100px;
-            max-height: 100px;
+            max-width: 90px;
+            max-height: 90px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
 
         .footer-signatures {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 35px;
             font-size: 12px;
             font-weight: bold;
         }
 
         .sig-box {
             text-align: center;
-            width: 150px;
+            width: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 60px;
         }
 
         .sig-img-container {
-            height: 42px;
+            height: 38px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -383,14 +396,14 @@
         }
 
         .sig-img-container img {
-            max-height: 42px;
+            max-height: 38px;
             max-width: 130px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
 
         .sig-line {
-            border-top: 1px solid #000 !important;
+            border-top: 1.5px solid #000 !important;
             padding-top: 2px;
         }
 
@@ -422,13 +435,11 @@
         @media print {
             @page {
                 size: A4 landscape;
-                margin: 5mm;
+                margin: 4mm;
             }
             body {
                 background: none !important;
                 padding: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
             }
             .search-container, .print-btn-container {
                 display: none !important;
@@ -438,12 +449,10 @@
             }
             .admit-card {
                 box-shadow: none !important;
-                border: 2px solid #2e7d32 !important;
+                border: 2.5px solid #2e7d32 !important;
                 margin: 0 auto !important;
                 width: 270mm !important;
                 background: #ffffff !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
             }
         }
     </style>
