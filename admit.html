@@ -271,7 +271,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .schedule-table th, .schedule-table td {
@@ -284,12 +284,13 @@
             background: #f1f8f1;
         }
 
+        /* নিয়মাবলির ঘর নিজস্ব জায়গায় সম্পূর্ণ সুবিন্যস্ত */
         .rules-section {
             border: 1.5px solid #2e7d32;
             border-radius: 6px;
             padding: 12px 18px;
             background: #fafafa;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .rules-title {
@@ -319,6 +320,7 @@
             margin-top: 6px;
         }
 
+        /* QR Code, Verified Text এবং Seal একই সারিতে/লেভেলে */
         .qr-verification {
             display: flex;
             align-items: center;
@@ -337,6 +339,7 @@
             color: #003366;
         }
 
+        /* সিলের সাইজ ১৩০px রেখে QR কোডের লেভেলে স্থাপন */
         .seal-box {
             width: 130px;
             height: 130px;
@@ -585,7 +588,7 @@
 
                             <div>
                                 <div class="info-row">
-                                    <div class="info-item"><strong>পরীক্ষার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
+                                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
                                     <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${displayPhone}</span></div>
                                 </div>
 
@@ -612,7 +615,7 @@
                                         <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
                                     </tr>
                                     <tr>
-                                        <td>০৬ নভেম্বর ২০২৬ (শুক্রবার)</td>
+                                        <td><strong style="color: #000; font-size: 14px;">০৬ নভেম্বর ২০২৬ (শুক্রবার)</strong></td>
                                         <td>
                                             সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
                                         </td>
