@@ -237,6 +237,8 @@
             display: inline-block;
             font-weight: bold;
             color: #002244;
+            font-size: 13.5px;
+            line-height: 1.2;
         }
 
         .exam-center-box {
@@ -318,7 +320,7 @@
         .qr-verification {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
         .qrcode-box img {
@@ -331,6 +333,22 @@
             line-height: 1.2;
             font-weight: bold;
             color: #003366;
+        }
+
+        /* গোল সিলের স্টাইল */
+        .seal-box {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seal-box img {
+            max-width: 55px;
+            max-height: 55px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
         }
 
         .footer-signatures {
@@ -453,7 +471,6 @@
             }
         };
 
-        // নির্দিষ্ট কলামের তথ্য রিটার্ন করার ফাংশন
         function getFieldValue(obj, keyName) {
             for (let key in obj) {
                 if (key.trim().toLowerCase() === keyName.toLowerCase()) {
@@ -481,14 +498,12 @@
                 return;
             }
 
-            // মোবাইল নম্বর মিলিয়ে স্টুডেন্ট ফিল্টার করা (কলাম F: Mobile)
             const matchedStudents = studentsData.filter(s => {
                 const phone = getFieldValue(s, "Mobile");
                 return phone === phoneVal;
             });
 
             if (matchedStudents.length > 0) {
-                // ভেরিফাইড (রোল দেওয়া) স্টুডেন্ট ফিল্টার করা (কলাম G: Roll)
                 const verifiedStudents = matchedStudents.filter(s => {
                     const roll = getFieldValue(s, "Roll");
                     return roll !== "";
@@ -503,19 +518,18 @@
                 errorMsg.style.display = "none";
 
                 verifiedStudents.forEach((student, index) => {
-                    const name = getFieldValue(student, "Name");       // A: Name
-                    const father = getFieldValue(student, "Father");   // B: Father
-                    const mother = getFieldValue(student, "Mother");   // C: Mother
-                    const school = getFieldValue(student, "School");   // D: School
-                    const cls = getFieldValue(student, "Class");       // E: Class
-                    const roll = getFieldValue(student, "Roll");       // G: Roll
-                    let center = getFieldValue(student, "Center");      // H: Center
+                    const name = getFieldValue(student, "Name");       
+                    const father = getFieldValue(student, "Father");   
+                    const mother = getFieldValue(student, "Mother");   
+                    const school = getFieldValue(student, "School");   
+                    const cls = getFieldValue(student, "Class");       
+                    const roll = getFieldValue(student, "Roll");       
+                    let center = getFieldValue(student, "Center");      
 
                     if (!center) {
                         center = "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।";
                     }
 
-                    // শ্রেণি অনুযায়ী পরীক্ষা নিয়ন্ত্রকের সিগনেচার নির্ধারণ (৪র্থ-৫ম হলে 4.5.png, ৬ষ্ঠ-১০ম হলে 6.10.png)
                     let sigSrc = "6.10.png";
                     const cleanCls = cls.toLowerCase();
                     if (cleanCls.includes("৪") || cleanCls.includes("৫") || cleanCls.includes("চতুর্থ") || cleanCls.includes("পঞ্চম") || cleanCls.includes("4") || cleanCls.includes("5") || cleanCls.includes("four") || cleanCls.includes("five")) {
@@ -605,6 +619,9 @@
                                         অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
                                         <span style="font-size: 8px; color: #555;">স্ক্যান করে সত্যতা যাচাই করুন</span>
                                     </div>
+                                    <div class="seal-box">
+                                        <img src="seal.png.png" alt="Seal" onerror="this.style.display='none'">
+                                    </div>
                                 </div>
 
                                 <div class="footer-signatures">
@@ -637,7 +654,7 @@
 
                 printContainer.style.display = "block";
             } else {
-                errorMsg.innerText = "দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত আবেদন পাওয়া যায়নি।";
+                errorMsg.innerText = "দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত প্রবেশপত্র পাওয়া যায়নি।";
                 errorMsg.style.display = "block";
             }
         }
