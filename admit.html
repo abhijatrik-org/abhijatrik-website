@@ -284,7 +284,6 @@
             background: #f1f8f1;
         }
 
-        /* নিয়মাবলির ঘর নিজস্ব জায়গায় সম্পূর্ণ সুবিন্যস্ত */
         .rules-section {
             border: 1.5px solid #2e7d32;
             border-radius: 6px;
@@ -320,7 +319,6 @@
             margin-top: 6px;
         }
 
-        /* QR Code, Verified Text এবং Seal একই সারিতে/লেভেলে */
         .qr-verification {
             display: flex;
             align-items: center;
@@ -339,7 +337,6 @@
             color: #003366;
         }
 
-        /* সিলের সাইজ ১৩০px রেখে QR কোডের লেভেলে স্থাপন */
         .seal-box {
             width: 130px;
             height: 130px;
@@ -349,11 +346,13 @@
             margin-left: 15px;
         }
 
+        /* সিলের কালার ম্যানুয়াল নীল স্ট্যাম্পের মতো করার জন্য ফিল্টার */
         .seal-box img {
             max-width: 130px;
             max-height: 130px;
             object-fit: contain;
             mix-blend-mode: multiply;
+            filter: invert(16%) sepia(90%) saturate(3000%) hue-rotate(215deg) brightness(85%) contrast(110%);
         }
 
         .footer-signatures {
@@ -588,7 +587,7 @@
 
                             <div>
                                 <div class="info-row">
-                                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
+                                    <div class="info-item"><strong>শিক্ষার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
                                     <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${displayPhone}</span></div>
                                 </div>
 
