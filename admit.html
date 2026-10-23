@@ -41,13 +41,13 @@
             font-size: 15px;
         }
 
-        .search-box {
+        .search-form {
             display: flex;
             gap: 12px;
             justify-content: center;
         }
 
-        .search-box input {
+        .search-form input {
             padding: 12px 18px;
             width: 65%;
             border: 2px solid #cbd5e1;
@@ -57,11 +57,11 @@
             transition: 0.3s;
         }
 
-        .search-box input:focus {
+        .search-form input:focus {
             border-color: #003366;
         }
 
-        .search-box button {
+        .search-form button {
             padding: 12px 25px;
             background-color: #003366;
             color: white;
@@ -73,7 +73,7 @@
             transition: 0.3s;
         }
 
-        .search-box button:hover {
+        .search-form button:hover {
             background-color: #002244;
         }
 
@@ -284,7 +284,6 @@
             background: #f1f8f1;
         }
 
-        /* পরীক্ষা সংক্রান্ত জরুরি নিয়মাবলি ঘরটি বড় ও স্পষ্ট করার জন্য */
         .rules-section {
             border: 1px solid #2e7d32;
             border-radius: 5px;
@@ -444,11 +443,11 @@
     <div class="search-container" id="searchSection">
         <h2>প্রবেশপত্র ডাউনলোড (Admit Card)</h2>
         <p>রেজিস্ট্রেশনের সময় প্রদানকৃত আপনার <b>মোবাইল নম্বরটি</b> নিচে লিখে সার্চ করুন:</p>
-        <div class="search-box">
+        <form class="search-form" onsubmit="event.preventDefault(); searchAdmitCard();">
             <input type="text" id="phoneInput" placeholder="মোবাইল নম্বর দিন (যেমন: 017xxxxxxxx)">
-            <button onclick="searchAdmitCard()"><i class="fas fa-search"></i> Search</button>
-        </div>
-        <div class="error-msg" id="errorMsg">দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত প্রবেশপত্র পাওয়া যায়নি।</div>
+            <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+        <div class="error-msg" id="errorMsg"></div>
     </div>
 
     <div class="cards-wrapper" id="cardsWrapper"></div>
@@ -460,6 +459,7 @@
     <script>
         const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQF0GPVe74D_NOYumFLo3aJDQZEwU-r_3Q1Lolhq_YD_t92n-TJzIy0iA0YyOkocc5WqeaqWeKD-K0U/pub?gid=0&single=true&output=csv";
         let studentsData = [];
+        let isDataLoaded = false;
 
         window.onload = function() {
             if (SHEET_CSV_URL && SHEET_CSV_URL.startsWith("http")) {
@@ -468,6 +468,10 @@
                     header: true,
                     complete: function(results) {
                         studentsData = results.data;
+                        isDataLoaded = true;
+                    },
+                    error: function(err) {
+                        console.error("CSV Load Error: ", err);
                     }
                 });
             }
@@ -503,6 +507,12 @@
             cardsWrapper.innerHTML = "";
             printContainer.style.display = "none";
 
+            if (!isDataLoaded && studentsData.length === 0) {
+                errorMsg.innerText = "সার্ভার থেকে তথ্য লোড হচ্ছে... দয়া করে ৫ সেকেন্ড পর আবার চেষ্টা করুন।";
+                errorMsg.style.display = "block";
+                return;
+            }
+
             const normalizedInputPhone = normalizePhone(rawPhoneVal);
 
             if (!normalizedInputPhone) {
@@ -534,4 +544,145 @@
                     const name = getFieldValue(student, "Name");       
                     const father = getFieldValue(student, "Father");   
                     const mother = getFieldValue(student, "Mother");   
-                    const school = getFieldValue(student, "School");
+                    const school = getFieldValue(student, "School");   
+                    const cls = getFieldValue(student, "Class");       
+                    const roll = getFieldValue(student, "Roll");       
+                    let center = getFieldValue(student, "Center");      
+
+                    const displayPhone = normalizedInputPhone;
+
+                    if (!center) {
+                        center = "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।";
+                    }
+
+                    let sigSrc = "6.10.png";
+                    const cleanCls = cls.toLowerCase();
+                    if (cleanCls.includes("৪") || cleanCls.includes("৫") || cleanCls.includes("চতুর্থ") || cleanCls.includes("পঞ্চম") || cleanCls.includes("4") || cleanCls.includes("5") || cleanCls.includes("four") || cleanCls.includes("five")) {
+                        sigSrc = "4.5.png";
+                    }
+
+                    const qrId = `qrcode_${index}`;
+
+                    const cardHTML = `
+                    <div class="admit-card">
+                        <div class="card-content">
+                            <div class="header-section">
+                                <div class="logo-area">
+                                    <img src="logo.jpg.jpeg" alt="Logo">
+                                </div>
+                                <div class="title-area">
+                                    <h1>অভিযাত্রিক সমাজকল্যাণ সংস্থা</h1>
+                                    <p>ফতেপুর, গোয়াইনঘাট, সিলেট।</p>
+                                    <h3>৪র্থ মেধাবৃত্তি পরীক্ষা ২০২৬</h3>
+                                    <div class="badge-title">প্রবেশপত্র</div>
+                                </div>
+                                <div class="top-right-section">
+                                    <div class="roll-box">বৃত্তি রোল: <span>${roll || '----'}</span></div>
+                                    <div class="photo-box">স্ট্যাম্প সাইজ ছবি</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="info-row">
+                                    <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
+                                    <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${displayPhone}</span></div>
+                                </div>
+
+                                <div class="info-row">
+                                    <div class="info-item"><strong>পিতার নাম:</strong> <span style="width: 79%;">${father || '----'}</span></div>
+                                    <div class="info-item"><strong>মাতার নাম:</strong> <span style="width: 79%;">${mother || '----'}</span></div>
+                                </div>
+
+                                <div class="info-row">
+                                    <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span style="width: 76%;">${school || '----'}</span></div>
+                                    <div class="info-item" style="flex: 0 0 240px;"><strong>শ্রেণি:</strong> <span style="width: 160px;">${cls || '----'}</span></div>
+                                </div>
+                            </div>
+
+                            <div class="exam-center-box">
+                                <i class="fas fa-map-marker-alt"></i> <strong>পরীক্ষা কেন্দ্র:</strong> <span>${center}</span>
+                            </div>
+
+                            <div>
+                                <div class="schedule-title">পরীক্ষার সময়সূচি</div>
+                                <table class="schedule-table">
+                                    <tr>
+                                        <th style="width: 35%;">তারিখ ও বার</th>
+                                        <th style="width: 65%;">সময় ও বিষয়সমূহ</th>
+                                    </tr>
+                                    <tr>
+                                        <td>০৬ নভেম্বর ২০২৬ (শুক্রবার)</td>
+                                        <td>
+                                            সকাল ১০ঃ৩০ মিনিট থেকে দুপুর ১২ঃ১০ মিনিট পর্যন্ত | <strong>বিষয়সমূহ:</strong> বাংলা, ইংরেজি, গণিত, বিজ্ঞান, সাধারণ জ্ঞান
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="rules-section">
+                                <div class="rules-title">পরীক্ষা সংক্রান্ত জরুরি নিয়মাবলি</div>
+                                <div class="rules-grid">
+                                    <div>১. পরীক্ষার ৩০ মিনিট পূর্বে কেন্দ্রে উপস্থিত হতে হবে।</div>
+                                    <div>৭. উত্তর সংশোধনে ঘষামাজা বা ফুইড ব্যবহার নিষেধ।</div>
+                                    <div>২. প্রবেশপত্র সঙ্গে আনা বাধ্যতামূলক।</div>
+                                    <div>৮. উত্তরপত্রে অতিরিক্ত কোনো দাগ বা লেখা যাবে না।</div>
+                                    <div>৩. মোবাইল, স্মার্টওয়াচ বা কোনো অননুমোদিত সামগ্রী নিষিদ্ধ।</div>
+                                    <div>৯. উত্তরপত্রে উত্তর দেওয়া আবশ্যক।</div>
+                                    <div>৪. মানবণ্টন অনুযায়ী পরীক্ষা ওএমআর পদ্ধতিতে হবে।</div>
+                                    <div>১০. অসদুপায় অবলম্বন ও কথা বলা সম্পূর্ণ নিষিদ্ধ।</div>
+                                    <div>৫. উত্তরপত্রের বৃত্ত কালো বলপেন দিয়ে ভরাট করতে হবে।</div>
+                                    <div>১১. পরীক্ষা শেষে খাতা জমা দিয়ে হল ত্যাগ করতে হবে।</div>
+                                    <div>৬. একটি প্রশ্নে একাধিক বৃত্ত পূরণ করা যাবে না।</div>
+                                </div>
+                            </div>
+
+                            <div class="footer-section">
+                                <div class="qr-verification">
+                                    <div class="qrcode-box" id="${qrId}"></div>
+                                    <div class="verified-text">
+                                        <span style="color: #2e7d32; font-weight: bold;"><i class="fas fa-check-circle"></i> VERIFIED</span><br>
+                                        অভিযাত্রিক সমাজকল্যাণ সংস্থা<br>
+                                        <span style="font-size: 8px; color: #555;">স্ক্যান করে সত্যতা যাচাই করুন</span>
+                                    </div>
+                                    <div class="seal-box">
+                                        <img src="seal.png.png" alt="Seal" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+
+                                <div class="footer-signatures">
+                                    <div class="sig-box">
+                                        <div class="sig-img-container">
+                                            <img src="${sigSrc}" alt="Signature">
+                                        </div>
+                                        <div class="sig-line">পরীক্ষা নিয়ন্ত্রক</div>
+                                    </div>
+                                    <div class="sig-box">
+                                        <div class="sig-img-container"></div>
+                                        <div class="sig-line">শিক্ষার্থীর স্বাক্ষর</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    cardsWrapper.insertAdjacentHTML('beforeend', cardHTML);
+
+                    new QRCode(document.getElementById(qrId), {
+                        text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
+                        width: 55,
+                        height: 55,
+                        colorDark : "#003366",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+                });
+
+                printContainer.style.display = "block";
+            } else {
+                errorMsg.innerText = "দুঃখিত! এই মোবাইল নম্বর দিয়ে কোনো নিবন্ধিত প্রবেশপত্র পাওয়া যায়নি।";
+                errorMsg.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
