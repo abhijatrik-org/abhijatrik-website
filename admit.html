@@ -14,7 +14,7 @@
             font-family: 'SolaimanLipi', Arial, sans-serif;
             background-color: #f1f5f9;
             margin: 0;
-            padding: 15px;
+            padding: 20px;
             color: #000;
         }
 
@@ -73,22 +73,17 @@
             gap: 30px;
         }
 
-        /* কার্ডের হাইট নিখুঁতভাবে কম্প্যাক্ট করা হলো */
+        /* প্রবেশপত্র মেইন বক্স */
         .admit-card {
-            width: 260mm;
-            height: 125mm;
+            width: 270mm;
             margin: 0 auto;
             background: #ffffff;
             border: 2px solid #2e7d32;
-            padding: 10px 20px;
+            padding: 15px 22px;
             box-sizing: border-box;
             position: relative;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
             page-break-after: always;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         .admit-card::before {
@@ -97,8 +92,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 380px;
-            height: 380px;
+            width: 400px;
+            height: 400px;
             background: url('logo.jpg.jpeg') no-repeat center center;
             background-size: contain;
             opacity: 0.04;
@@ -109,10 +104,6 @@
         .card-content {
             position: relative;
             z-index: 1;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
         }
 
         .header-section {
@@ -120,13 +111,13 @@
             justify-content: space-between;
             align-items: flex-start;
             border-bottom: 2px solid #2e7d32;
-            padding-bottom: 4px;
-            margin-bottom: 4px;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .logo-area {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,30 +140,30 @@
         .title-area h1 {
             color: #b30000;
             margin: 0;
-            font-size: 21px;
+            font-size: 23px;
             font-weight: bold;
         }
 
         .title-area p {
-            margin: 1px 0;
-            font-size: 11px;
+            margin: 2px 0;
+            font-size: 12px;
             color: #333;
         }
 
         .title-area h3 {
             color: #003366;
             margin: 2px 0 0 0;
-            font-size: 13.5px;
+            font-size: 14.5px;
         }
 
         .badge-title {
             background: #003366;
             color: white;
-            padding: 1px 16px;
+            padding: 2px 18px;
             display: inline-block;
             border-radius: 3px;
-            font-size: 11px;
-            margin-top: 2px;
+            font-size: 12px;
+            margin-top: 3px;
             font-weight: bold;
         }
 
@@ -180,42 +171,42 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 3px;
+            gap: 4px;
         }
 
         .photo-box {
-            width: 65px;
-            height: 78px;
+            width: 70px;
+            height: 85px;
             border: 1px dashed #666;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
+            font-size: 9.5px;
             color: #666;
             background: #fafafa;
             text-align: center;
         }
 
         .roll-box {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
         }
 
         .roll-box span {
             border: 1px solid #ccc;
-            padding: 1px 6px;
+            padding: 2px 8px;
             background: #fff;
             color: #b30000;
             font-weight: bold;
             margin-left: 4px;
             display: inline-block;
-            min-width: 70px;
+            min-width: 75px;
             text-align: center;
         }
 
         .info-row {
-            margin-bottom: 3px;
-            font-size: 12.5px;
+            margin-bottom: 6px;
+            font-size: 13.5px;
             display: flex;
             gap: 15px;
             align-items: baseline;
@@ -231,7 +222,7 @@
             display: inline-block;
             font-weight: bold;
             color: #002244;
-            font-size: 12.5px;
+            font-size: 13.5px;
             line-height: 1.2;
         }
 
@@ -239,9 +230,9 @@
             border: 1.5px solid #003366;
             background: #f0f4f8;
             border-radius: 4px;
-            margin: 3px 0;
-            padding: 3px 8px;
-            font-size: 12.5px;
+            margin: 6px 0;
+            padding: 5px 10px;
+            font-size: 13.5px;
             color: #002244;
             font-weight: bold;
         }
@@ -255,22 +246,22 @@
             background: #2e7d32;
             color: white;
             text-align: center;
-            padding: 2px;
+            padding: 3px;
             font-weight: bold;
-            font-size: 12px;
-            margin-top: 2px;
+            font-size: 13px;
+            margin-top: 4px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px;
-            margin-bottom: 4px;
+            font-size: 12.5px;
+            margin-bottom: 8px;
         }
 
         .schedule-table th, .schedule-table td {
             border: 1px solid #2e7d32;
-            padding: 3px 6px;
+            padding: 5px 8px;
             text-align: left;
         }
 
@@ -281,36 +272,38 @@
         .rules-section {
             border: 1.2px solid #2e7d32;
             border-radius: 5px;
-            padding: 6px 12px;
+            padding: 8px 14px;
             background: #fafafa;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
         }
 
         .rules-title {
-            font-size: 12.5px;
+            font-size: 13.5px;
             font-weight: bold;
             color: #2e7d32;
             text-align: center;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             border-bottom: 1px solid #c8e6c9;
-            padding-bottom: 2px;
+            padding-bottom: 3px;
         }
 
         .rules-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2px 20px;
-            font-size: 11px;
+            gap: 4px 25px;
+            font-size: 12px;
             color: #111;
-            line-height: 1.35;
+            line-height: 1.45;
             font-weight: 500;
         }
 
+        /* ফুটার সেকশন (QR, Seal, Signature) */
         .footer-section {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-top: 2px;
+            align-items: flex-end;
+            margin-top: 8px;
+            padding-top: 5px;
         }
 
         .qr-verification {
@@ -319,14 +312,19 @@
             gap: 12px;
         }
 
+        .qrcode-box {
+            width: 55px;
+            height: 55px;
+        }
+
         .qrcode-box img {
-            width: 45px !important;
-            height: 45px !important;
+            width: 55px !important;
+            height: 55px !important;
         }
 
         .verified-text {
-            font-size: 8.5px;
-            line-height: 1.2;
+            font-size: 9px;
+            line-height: 1.3;
             font-weight: bold;
             color: #003366;
         }
@@ -345,38 +343,38 @@
             max-height: 100px;
             object-fit: contain;
             mix-blend-mode: multiply;
-            filter: invert(16%) sepia(90%) saturate(3000%) hue-rotate(215deg) brightness(85%) contrast(110%);
         }
 
         .footer-signatures {
             display: flex;
-            gap: 20px;
-            font-size: 11px;
+            gap: 25px;
+            font-size: 11.5px;
             font-weight: bold;
         }
 
         .sig-box {
             text-align: center;
-            width: 130px;
+            width: 140px;
         }
 
         .sig-img-container {
-            height: 32px;
+            height: 40px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
+            margin-bottom: 2px;
         }
 
         .sig-img-container img {
-            max-height: 34px;
-            max-width: 100px;
+            max-height: 40px;
+            max-width: 120px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
 
         .sig-line {
             border-top: 1px solid #000;
-            padding-top: 1px;
+            padding-top: 2px;
         }
 
         .print-btn-container {
@@ -407,7 +405,7 @@
         @media print {
             @page {
                 size: A4 landscape;
-                margin: 0;
+                margin: 5mm;
             }
             body {
                 background: none;
@@ -422,9 +420,8 @@
             .admit-card {
                 box-shadow: none;
                 border: 2px solid #2e7d32 !important;
-                margin: auto;
-                width: 260mm;
-                height: 125mm;
+                margin: 0 auto;
+                width: 270mm;
             }
         }
     </style>
@@ -660,8 +657,8 @@
 
                     new QRCode(document.getElementById(qrId), {
                         text: "https://abhijatrik-org.github.io/abhijatrik-website/admit.html",
-                        width: 45,
-                        height: 45,
+                        width: 55,
+                        height: 55,
                         colorDark : "#003366",
                         colorLight : "#ffffff",
                         correctLevel : QRCode.CorrectLevel.H
