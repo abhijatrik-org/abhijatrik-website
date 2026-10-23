@@ -335,19 +335,19 @@
             color: #003366;
         }
 
-        /* গোল সিলের সাইজ কিউআর কোডের সমান বা আকর্ষণীয় বড় করার জন্য */
+        /* সিলের সাইজ বড় করা হয়েছে (100px) */
         .seal-box {
-            width: 75px;
-            height: 75px;
+            width: 100px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 5px;
+            margin-left: 8px;
         }
 
         .seal-box img {
-            max-width: 75px;
-            max-height: 75px;
+            max-width: 100px;
+            max-height: 100px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
@@ -484,8 +484,20 @@
             return "";
         }
 
+        // মোবাইল নম্বর ফরম্যাট ঠিক করার হেলপার ফাংশন
+        function normalizePhone(phoneStr) {
+            if (!phoneStr) return "";
+            // সব নন-ডিজিট ক্যারেক্টার বাদ দেওয়া
+            let clean = phoneStr.replace(/\D/g, "");
+            // যদি ১০ ডিজিটের হয় (যেমন 1718377229), শুরুতে 0 যোগ করে ১১ ডিজিট বানানো
+            if (clean.length === 10 && clean.startsWith("1")) {
+                clean = "0" + clean;
+            }
+            return clean;
+        }
+
         function searchAdmitCard() {
-            const phoneVal = document.getElementById("phoneInput").value.trim();
+            const rawPhoneVal = document.getElementById("phoneInput").value.trim();
             const errorMsg = document.getElementById("errorMsg");
             const cardsWrapper = document.getElementById("cardsWrapper");
             const printContainer = document.getElementById("printContainer");
@@ -493,15 +505,18 @@
             cardsWrapper.innerHTML = "";
             printContainer.style.display = "none";
 
-            if (!phoneVal) {
+            const normalizedInputPhone = normalizePhone(rawPhoneVal);
+
+            if (!normalizedInputPhone) {
                 errorMsg.innerText = "দয়া করে একটি সঠিক মোবাইল নম্বর লিখুন।";
                 errorMsg.style.display = "block";
                 return;
             }
 
+            // গুগোল শিটের মোবাইল নম্বর এবং ইনপুট দুটিই ম্যাচ করা
             const matchedStudents = studentsData.filter(s => {
-                const phone = getFieldValue(s, "Mobile");
-                return phone === phoneVal;
+                const sheetPhone = getFieldValue(s, "Mobile");
+                return normalizePhone(sheetPhone) === normalizedInputPhone;
             });
 
             if (matchedStudents.length > 0) {
@@ -526,6 +541,9 @@
                     const cls = getFieldValue(student, "Class");       
                     const roll = getFieldValue(student, "Roll");       
                     let center = getFieldValue(student, "Center");      
+
+                    // সব সময় এডমিট কার্ডে সুন্দর ১১ ডিজিটের ফোন নম্বর প্রদর্শন করবে
+                    const displayPhone = normalizedInputPhone;
 
                     if (!center) {
                         center = "ফতেপুর উচ্চ বিদ্যালয় ও কলেজ, গোয়াইনঘাট, সিলেট।";
@@ -561,7 +579,7 @@
                             <div>
                                 <div class="info-row">
                                     <div class="info-item"><strong>প্রার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
-                                    <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${phoneVal}</span></div>
+                                    <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${displayPhone}</span></div>
                                 </div>
 
                                 <div class="info-row">
