@@ -16,6 +16,8 @@
             margin: 0;
             padding: 20px;
             color: #000;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
         .search-container {
@@ -73,17 +75,19 @@
             gap: 30px;
         }
 
-        /* প্রবেশপত্র মেইন বক্স */
+        /* প্রবেশপত্র হরিজন্টাল মেইন বক্স */
         .admit-card {
             width: 270mm;
             margin: 0 auto;
-            background: #ffffff;
-            border: 2px solid #2e7d32;
-            padding: 15px 22px;
+            background: #ffffff !important;
+            border: 2px solid #2e7d32 !important;
+            padding: 16px 24px;
             box-sizing: border-box;
             position: relative;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             page-break-after: always;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
         .admit-card::before {
@@ -92,8 +96,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 420px;
+            height: 420px;
             background: url('logo.jpg.jpeg') no-repeat center center;
             background-size: contain;
             opacity: 0.04;
@@ -110,14 +114,14 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 2px solid #2e7d32;
+            border-bottom: 2px solid #2e7d32 !important;
             padding-bottom: 6px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .logo-area {
-            width: 65px;
-            height: 65px;
+            width: 68px;
+            height: 68px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,9 +142,9 @@
         }
 
         .title-area h1 {
-            color: #b30000;
+            color: #b30000 !important;
             margin: 0;
-            font-size: 23px;
+            font-size: 24px;
             font-weight: bold;
         }
 
@@ -151,15 +155,15 @@
         }
 
         .title-area h3 {
-            color: #003366;
+            color: #003366 !important;
             margin: 2px 0 0 0;
-            font-size: 14.5px;
+            font-size: 15px;
         }
 
         .badge-title {
-            background: #003366;
-            color: white;
-            padding: 2px 18px;
+            background: #003366 !important;
+            color: white !important;
+            padding: 2px 20px;
             display: inline-block;
             border-radius: 3px;
             font-size: 12px;
@@ -171,12 +175,12 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 4px;
+            gap: 5px;
         }
 
         .photo-box {
-            width: 70px;
-            height: 85px;
+            width: 72px;
+            height: 88px;
             border: 1px dashed #666;
             display: flex;
             align-items: center;
@@ -196,120 +200,133 @@
             border: 1px solid #ccc;
             padding: 2px 8px;
             background: #fff;
-            color: #b30000;
+            color: #b30000 !important;
             font-weight: bold;
             margin-left: 4px;
             display: inline-block;
-            min-width: 75px;
+            min-width: 80px;
             text-align: center;
         }
 
+        /* তথ্য সেকশন - পর্যাপ্ত স্পেস দিয়ে ছড়ানো */
+        .info-container {
+            margin-bottom: 12px;
+        }
+
         .info-row {
-            margin-bottom: 6px;
-            font-size: 13.5px;
+            margin-bottom: 10px;
+            font-size: 14px;
             display: flex;
-            gap: 15px;
+            gap: 25px;
             align-items: baseline;
         }
 
         .info-item {
             flex-grow: 1;
+            display: flex;
+            align-items: baseline;
             white-space: nowrap;
+        }
+
+        .info-item strong {
+            margin-right: 8px;
+            color: #000;
         }
 
         .info-item span {
             border-bottom: 1px dotted #000;
-            display: inline-block;
+            flex-grow: 1;
             font-weight: bold;
-            color: #002244;
-            font-size: 13.5px;
+            color: #002244 !important;
+            font-size: 14px;
             line-height: 1.2;
+            padding-left: 5px;
         }
 
         .exam-center-box {
-            border: 1.5px solid #003366;
-            background: #f0f4f8;
+            border: 1.5px solid #003366 !important;
+            background: #f0f4f8 !important;
             border-radius: 4px;
-            margin: 6px 0;
-            padding: 5px 10px;
-            font-size: 13.5px;
-            color: #002244;
+            margin: 10px 0;
+            padding: 6px 12px;
+            font-size: 14px;
+            color: #002244 !important;
             font-weight: bold;
         }
 
         .exam-center-box span {
-            color: #000;
+            color: #000 !important;
             font-weight: bold;
         }
 
         .schedule-title {
-            background: #2e7d32;
-            color: white;
+            background: #2e7d32 !important;
+            color: white !important;
             text-align: center;
-            padding: 3px;
+            padding: 4px;
             font-weight: bold;
-            font-size: 13px;
-            margin-top: 4px;
+            font-size: 13.5px;
+            margin-top: 6px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12.5px;
-            margin-bottom: 8px;
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
         .schedule-table th, .schedule-table td {
-            border: 1px solid #2e7d32;
-            padding: 5px 8px;
+            border: 1px solid #2e7d32 !important;
+            padding: 6px 10px;
             text-align: left;
         }
 
         .schedule-table th {
-            background: #f1f8f1;
+            background: #f1f8f1 !important;
         }
 
         .rules-section {
-            border: 1.2px solid #2e7d32;
+            border: 1.2px solid #2e7d32 !important;
             border-radius: 5px;
-            padding: 8px 14px;
-            background: #fafafa;
-            margin-bottom: 10px;
+            padding: 10px 16px;
+            background: #fafafa !important;
+            margin-bottom: 12px;
         }
 
         .rules-title {
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: bold;
-            color: #2e7d32;
+            color: #2e7d32 !important;
             text-align: center;
-            margin-bottom: 6px;
-            border-bottom: 1px solid #c8e6c9;
-            padding-bottom: 3px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #c8e6c9 !important;
+            padding-bottom: 4px;
         }
 
         .rules-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4px 25px;
-            font-size: 12px;
+            gap: 5px 30px;
+            font-size: 12.5px;
             color: #111;
-            line-height: 1.45;
+            line-height: 1.5;
             font-weight: 500;
         }
 
-        /* ফুটার সেকশন (QR, Seal, Signature) */
+        /* ফুটার সেকশন */
         .footer-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-top: 8px;
+            margin-top: 10px;
             padding-top: 5px;
         }
 
         .qr-verification {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .qrcode-box {
@@ -323,10 +340,10 @@
         }
 
         .verified-text {
-            font-size: 9px;
+            font-size: 9.5px;
             line-height: 1.3;
             font-weight: bold;
-            color: #003366;
+            color: #003366 !important;
         }
 
         .seal-box {
@@ -347,18 +364,18 @@
 
         .footer-signatures {
             display: flex;
-            gap: 25px;
-            font-size: 11.5px;
+            gap: 30px;
+            font-size: 12px;
             font-weight: bold;
         }
 
         .sig-box {
             text-align: center;
-            width: 140px;
+            width: 150px;
         }
 
         .sig-img-container {
-            height: 40px;
+            height: 42px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -366,14 +383,14 @@
         }
 
         .sig-img-container img {
-            max-height: 40px;
-            max-width: 120px;
+            max-height: 42px;
+            max-width: 130px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
 
         .sig-line {
-            border-top: 1px solid #000;
+            border-top: 1px solid #000 !important;
             padding-top: 2px;
         }
 
@@ -387,8 +404,8 @@
             background-color: #2e7d32;
             color: white;
             border: none;
-            padding: 10px 25px;
-            font-size: 15px;
+            padding: 12px 30px;
+            font-size: 16px;
             border-radius: 6px;
             cursor: pointer;
             font-family: 'SolaimanLipi', sans-serif;
@@ -408,8 +425,10 @@
                 margin: 5mm;
             }
             body {
-                background: none;
-                padding: 0;
+                background: none !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             .search-container, .print-btn-container {
                 display: none !important;
@@ -418,10 +437,13 @@
                 gap: 0;
             }
             .admit-card {
-                box-shadow: none;
+                box-shadow: none !important;
                 border: 2px solid #2e7d32 !important;
-                margin: 0 auto;
-                width: 270mm;
+                margin: 0 auto !important;
+                width: 270mm !important;
+                background: #ffffff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
         }
     </style>
@@ -570,20 +592,20 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="info-container">
                                 <div class="info-row">
-                                    <div class="info-item"><strong>শিক্ষার্থীর নাম:</strong> <span style="width: 76%;">${name || '----'}</span></div>
-                                    <div class="info-item" style="flex: 0 0 240px;"><strong>মোবাইল:</strong> <span style="width: 150px;">${displayPhone}</span></div>
+                                    <div class="info-item" style="flex: 2;"><strong>শিক্ষার্থীর নাম:</strong> <span>${name || '----'}</span></div>
+                                    <div class="info-item" style="flex: 1; max-width: 280px;"><strong>মোবাইল:</strong> <span>${displayPhone}</span></div>
                                 </div>
 
                                 <div class="info-row">
-                                    <div class="info-item"><strong>পিতার নাম:</strong> <span style="width: 79%;">${father || '----'}</span></div>
-                                    <div class="info-item"><strong>মাতার নাম:</strong> <span style="width: 79%;">${mother || '----'}</span></div>
+                                    <div class="info-item" style="flex: 1;"><strong>পিতার নাম:</strong> <span>${father || '----'}</span></div>
+                                    <div class="info-item" style="flex: 1;"><strong>মাতার নাম:</strong> <span>${mother || '----'}</span></div>
                                 </div>
 
                                 <div class="info-row">
-                                    <div class="info-item"><strong>প্রতিষ্ঠানের নাম:</strong> <span style="width: 76%;">${school || '----'}</span></div>
-                                    <div class="info-item" style="flex: 0 0 240px;"><strong>শ্রেণি:</strong> <span style="width: 160px;">${cls || '----'}</span></div>
+                                    <div class="info-item" style="flex: 2;"><strong>প্রতিষ্ঠানের নাম:</strong> <span>${school || '----'}</span></div>
+                                    <div class="info-item" style="flex: 1; max-width: 280px;"><strong>শ্রেণি:</strong> <span>${cls || '----'}</span></div>
                                 </div>
                             </div>
 
