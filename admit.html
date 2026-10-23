@@ -320,7 +320,7 @@
         .qr-verification {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .qrcode-box img {
@@ -335,19 +335,19 @@
             color: #003366;
         }
 
-        /* সিলের সাইজ বড় করা হয়েছে (100px) */
+        /* সিলের সাইজ ১৩০ পিক্সেল করে আরও ডানপাশে সরানো হয়েছে */
         .seal-box {
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 8px;
+            margin-left: 35px;
         }
 
         .seal-box img {
-            max-width: 100px;
-            max-height: 100px;
+            max-width: 130px;
+            max-height: 130px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
@@ -484,12 +484,9 @@
             return "";
         }
 
-        // মোবাইল নম্বর ফরম্যাট ঠিক করার হেলপার ফাংশন
         function normalizePhone(phoneStr) {
             if (!phoneStr) return "";
-            // সব নন-ডিজিট ক্যারেক্টার বাদ দেওয়া
             let clean = phoneStr.replace(/\D/g, "");
-            // যদি ১০ ডিজিটের হয় (যেমন 1718377229), শুরুতে 0 যোগ করে ১১ ডিজিট বানানো
             if (clean.length === 10 && clean.startsWith("1")) {
                 clean = "0" + clean;
             }
@@ -513,7 +510,6 @@
                 return;
             }
 
-            // গুগোল শিটের মোবাইল নম্বর এবং ইনপুট দুটিই ম্যাচ করা
             const matchedStudents = studentsData.filter(s => {
                 const sheetPhone = getFieldValue(s, "Mobile");
                 return normalizePhone(sheetPhone) === normalizedInputPhone;
@@ -542,7 +538,6 @@
                     const roll = getFieldValue(student, "Roll");       
                     let center = getFieldValue(student, "Center");      
 
-                    // সব সময় এডমিট কার্ডে সুন্দর ১১ ডিজিটের ফোন নম্বর প্রদর্শন করবে
                     const displayPhone = normalizedInputPhone;
 
                     if (!center) {
